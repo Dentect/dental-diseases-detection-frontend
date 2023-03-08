@@ -1,5 +1,7 @@
 import React from 'react'
 import { Navbar, Container, Nav } from 'react-bootstrap';
+// import teeth from '/../images/image 9.png'
+import teeth from '../assets/image9.png';
 
 export default function NavBar(props: any) {
 
@@ -7,14 +9,15 @@ export default function NavBar(props: any) {
 
         <Navbar className="navbar">
             <Container>
-                <Navbar.Brand href="#home"><img src='./images/image 9.png' alt=""  width="30" height="24"/></Navbar.Brand>
-                <h1 className="me-auto" >Upload X-Ray</h1>
+                <Navbar.Brand href="#home"><img src={teeth} alt=""  width="50" height="50"/></Navbar.Brand>
+                <h1 className="me-auto">Upload X-Ray</h1>
                 <Nav className="ms-auto">
                     <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#features">Logout</Nav.Link>
+                    <Nav.Link href="#Logout">Logout</Nav.Link>
                 </Nav>
             </Container>
         </Navbar>
-        );
+
+    );
 }
 

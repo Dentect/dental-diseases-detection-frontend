@@ -1,27 +1,68 @@
-
-body{
-  background-color: #088CAA !important;
-  background-image: url('../images/image 15.png');
+body {
+  background-color: #088CAA;
+  background-image: url('assets/image\ 15.png');
   background-size: cover;
 }
 
- .navbar{
+input{
+  display: none;
+  visibility: hidden;
+}
+
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
+  height: 80%;
   width: 100%;
-  padding: 0.5rem;
   background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
-} 
+}
 
-.ms-auto{
-  font-family: "Akshar" !important;
+.ms-auto {
   font-size: x-large;
   font-weight: bolder;
 }
 
-.custum-height{
+.me-auto {
+  left: 250px;
+  color: white;
+  font-size: 60px;
+  font-weight: bolder;
+}
+
+.custum-height {
   max-height: 60%;
+}
+
+.upload {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 54px;
+  position: absolute;
+  width: 50%;
+  height: 70%;
+  left: 494px;
+  top: 197px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.buttons {
+  position: relative;
+  width: 256.27px;
+  height: 95.72px;
+  background: #088CAA;
+  border-radius: 18px;
+  border-color: transparent;
+  margin: 10%;
+}
+
+.images{
+  position: absolute;
+  left: 263px;
+  top: 99px;
+  height: 50%;
+  width: 50%;
+
 }
