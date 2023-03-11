@@ -24,7 +24,7 @@ function ImageUpload() {
   }
   return (
     <div className="upload">
-      <img className="images"  src={uploadedImage} alt=""/>
+      <img className="images" src={uploadedImage} alt="" />
       <button className="buttons">
         <label htmlFor="files" className="btn">Upload X-ray</label>
         <input id="files" type="file" onChange={handleChange} />

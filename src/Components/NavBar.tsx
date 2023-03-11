@@ -1,6 +1,5 @@
 import React from 'react'
 import { Navbar, Container, Nav } from 'react-bootstrap';
-// import teeth from '/../images/image 9.png'
 import teeth from '../assets/image9.png';
 
 export default function NavBar(props: any) {
