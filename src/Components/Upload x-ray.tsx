@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function ImageUpload() {
   const [image, setImages] = useState('');
@@ -29,8 +30,9 @@ function ImageUpload() {
         <label htmlFor="files" className="btn">Upload X-ray</label>
         <input id="files" type="file" onChange={handleChange} />
       </button>
-
-      <button className="buttons" onClick={handleApi}>Detect</button>
+      <Link to={'/DisplayDection'}>
+        <button className="buttons" onClick={handleApi}>Detect</button>
+      </Link>
     </div>
   );
 }

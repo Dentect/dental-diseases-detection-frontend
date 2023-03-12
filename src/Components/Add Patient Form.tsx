@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import registerImage from '../assets/Register patient data.png';
 import { useForm } from 'react-hook-form';
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 
 
@@ -81,11 +82,13 @@ function PatientRegister(props: any) {
 
                     <div className='data'>
                         <label htmlFor="dentalHistory">Dental History</label>
-                        <input type='text'/>
+                        <input type='text' />
                     </div>
 
                     <div className='data submit'>
-                        <button type="submit" className="buttons">Register Patient</button>
+                        <Link to={'/ImageUpload'}>
+                            <button type="submit" className="buttons">Register Patient</button>
+                        </Link>
                     </div>
                 </form>
             </div>

@@ -8,21 +8,60 @@ import PatientRegister from './Components/Add Patient Form';
 import DoctorLogin from './Components/Doctor Login Form';
 import EditPatient from './Components/Edit Patient Data';
 import Home from './Components/Home ';
+import { BrowserRouter, createBrowserRouter, Route, RouterProvider, Routes } from 'react-router-dom';
 
+
+/*const routes = createBrowserRouter([
+  {
+    path: '/Login',
+    element: <DoctorLogin />
+  },
+  {
+    path:'/Register',
+    element:<DoctorRegister />
+  },
+  {
+    path:'/Home',
+    element:<Home />
+  },
+  {
+    path:'/PatientRegister',
+    element:<PatientRegister />
+  },
+  {
+    path:'/ImageUpload',
+    element:<ImageUpload />
+  },
+  {
+    path:'/DisplayDection',
+    element:<DisplayDection />
+  },
+]);*/
 
 function App() {
   return (
-    <div >
-      <NavBar />
-      {/* <Home /> */}
-      {/* <DisplayDection /> */}
-      {/* <ImageUpload /> */}
-      {/* <DoctorRegister /> */}
-      {/* <PatientRegister /> */}
-      {/* <DoctorLogin /> */}
-      {/* <EditPatient /> */}
+      // 
 
-    </div>
+      // <Home />
+      // <DisplayDection />
+      // <ImageUpload />
+      // <RouterProvider router={routes}/>
+      // <PatientRegister />
+      // <DoctorLogin />
+      // <EditPatient />
+
+      <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route  path="/Register" element={<DoctorRegister />}/>
+          <Route  path='' element={<Home />} />
+          <Route  path="/Login" element={<DoctorLogin />} />
+          <Route  path="/ImageUpload" element={<ImageUpload />} />
+          <Route  path="/DisplayDection" element={<DisplayDection />} />
+          <Route  path="/PatientRegister" element={<PatientRegister />} />
+      </Routes>
+    </BrowserRouter>
+
   );
 }
 

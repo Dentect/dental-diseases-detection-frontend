@@ -2,14 +2,10 @@ import { useEffect, useState } from "react";
 import registerImage from '../assets/Login.png';
 import { useForm } from 'react-hook-form';
 import axios from "axios";
-
-
-
-
+import { Link } from "react-router-dom";
 
 function DoctorLogin() {
 
-    const [post, setPost] = useState(null);
 
     const {
         register,
@@ -29,7 +25,7 @@ function DoctorLogin() {
 
     return (
         <div className="container">
-            
+
             <div className="FormImage">
                 <img src={registerImage}></img>
             </div>
@@ -41,16 +37,18 @@ function DoctorLogin() {
 
                     <div className='data'>
                         <label htmlFor="email">Email</label>
-                        <input type='email' /*name='email'*/ {...register("email", { required: true, pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/ })} />
+                        <input type='email' {...register("email", { required: true, pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/ })} />
                     </div>
 
                     <div className='data'>
                         <label htmlFor="password">Password</label>
-                        <input type='password' /*name='password'*/ {...register("password", { required: true, minLength: 6 })} />
+                        <input type='password' {...register("password", { required: true, minLength: 6 })} />
                     </div>
 
                     <div className='data submit'>
-                        <button type="submit" className="buttons">Login</button>
+                        <Link to={'/PatientRegister'}>
+                            <button type="submit" className="buttons">Login</button>
+                        </Link>
                     </div>
                 </form>
             </div>

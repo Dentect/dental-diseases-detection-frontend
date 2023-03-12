@@ -2,6 +2,7 @@ import { useState } from "react";
 import test from '../assets/Home.png';
 import axios from "axios";
 import NavBar from "./NavBar";
+import { Link } from "react-router-dom";
 
 
 export default function Home(props: any) {
@@ -11,9 +12,9 @@ export default function Home(props: any) {
             <div className="homeBox">
                 <h1>Dental Disease Detection</h1>
 
-                <div>
-                    <button type="submit" className="buttons">Join Now</button>
-                </div>
+                <Link to={'/Register'}>
+                    <button className="buttons">Join Now</button>
+                </Link>
 
             </div>
         </div>

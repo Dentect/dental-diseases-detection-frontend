@@ -26,15 +26,7 @@ function EditPatient(props: any) {
                 console.log(res)
             })
     }
-    // function onSubmit() {
-    //     axios.post(baseURL, {
-    //             title: "Hello World!",
-    //             body: "This is a new post."
-    //         }).then((response) => {
-    //             setPost(response.data);
-    //         });
-    // }
-
+    
     return (
         <div className="app container">
             <div className="FormImage">
