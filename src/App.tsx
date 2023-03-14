@@ -1,7 +1,7 @@
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import ImageUpload from './Components/Upload x-ray';
-import DisplayDection from './Components/dispayDetection';
+import DisplayDection from './Components/Display Detection';
 import NavBar from './Components/NavBar';
 import DoctorRegister from './Components/Doctor Register Form';
 import PatientRegister from './Components/Add Patient Form';

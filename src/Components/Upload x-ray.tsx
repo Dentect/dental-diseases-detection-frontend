@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import DisplayDection from "./Display Detection";
 
 function ImageUpload() {
   const [image, setImages] = useState('');
@@ -14,25 +15,35 @@ function ImageUpload() {
   }
 
   const handleApi = () => {
-    const url = 'http://localhost:3000/posts/1';
+    const url = 'http://localhost:3000/patients/6408c454cd28f77798fbfd76/xrays';
     const formData = new FormData();
-    formData.append('image', image);
+    formData.append('xray', image);
+    formData.append('xrayDate', '2023-10-6');
 
-    axios.post(url, formData).then((res) => {
+    const response = axios.post(url, formData).then((res) => {
+          console.log(res.data.xray.originalURL)
+          const newURL = res.data.xray.originalURL;
+          setUploadedImages(newURL);
+
+
     }).catch((err) => {
       console.log(err)
     })
+
+
   }
+
   return (
     <div className="upload">
+
       <img className="images" src={uploadedImage} alt="" />
       <button className="buttons">
         <label htmlFor="files" className="btn">Upload X-ray</label>
         <input id="files" type="file" onChange={handleChange} />
       </button>
-      <Link to={'/DisplayDection'}>
+      {/* <Link to={'/DisplayDection'}> */}
         <button className="buttons" onClick={handleApi}>Detect</button>
-      </Link>
+      {/* </Link> */}
     </div>
   );
 }
