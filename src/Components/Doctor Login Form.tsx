@@ -24,29 +24,29 @@ function DoctorLogin() {
     }
 
     return (
-        <div className="container">
+        <div className="row justify-content-center">
 
-            <div className="FormImage">
-                <img src={registerImage}></img>
+            <div className="col-md-5 my-auto col-sm-9">
+                <img className="w-100" src={registerImage}></img>
             </div>
 
-            <div className='form-wrapper'>
+            <div className='form-wrapper col-md-5 col-sm-9'>
                 <h2>Login</h2>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
 
                     <div className='data'>
                         <label htmlFor="email">Email</label>
-                        <input type='email' {...register("email", { required: true, pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/ })} />
+                        <input className="inputdata" type='email' {...register("email", { required: true, pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/ })} />
                     </div>
 
                     <div className='data'>
                         <label htmlFor="password">Password</label>
-                        <input type='password' {...register("password", { required: true, minLength: 6 })} />
+                        <input className="inputdata" type='password' {...register("password", { required: true, minLength: 6 })} />
                     </div>
 
                     <div className='data submit'>
-                        <Link to={'/PatientRegister'}>
+                        <Link to={'/Main Functions'}>
                             <button type="submit" className="buttons">Login</button>
                         </Link>
                     </div>

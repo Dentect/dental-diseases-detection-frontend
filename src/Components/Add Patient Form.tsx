@@ -37,52 +37,52 @@ function PatientRegister(props: any) {
     // }
 
     return (
-        <div className="container">
-            <div className="FormImage">
-                <img src={registerImage}></img>
+        <div className="row justify-content-center">
+            <div className="col-md-5 my-auto col-sm-9">
+                <img className="w-100" src={registerImage}></img>
             </div>
 
-            <div className='form-wrapper'>
+            <div className='form-wrapper col-md-5 col-sm-9'>
                 <h2>Register patient data</h2>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='data'>
                         <label htmlFor="firstName">First Name</label>
-                        <input type='text' name='firstName' />
+                        <input className="inputdata" type='text' name='firstName' />
                         <label htmlFor="middleName">Middle Name</label>
-                        <input type='text' name='middleName' />
+                        <input className="inputdata" type='text' name='middleName' />
                         <label htmlFor="lastName">Last Name</label>
-                        <input type='text' name='lastName' />
+                        <input className="inputdata" type='text' name='lastName' />
                     </div>
 
                     <div className='data'>
                         <label htmlFor="email">Email</label>
-                        <input type='email' /*name='email'*/ {...register("email", { required: true, pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/ })} />
+                        <input className="inputdata" type='email' /*name='email'*/ {...register("email", { required: true, pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/ })} />
                     </div>
 
                     <div className='data'>
                         <label htmlFor="medicalHistory">Medical History</label>
-                        <input type='text' />
+                        <input className="inputdata" type='text' />
                     </div>
 
                     <div className='data'>
                         <label htmlFor="gender">Gender</label>
-                        <input type='text' />
+                        <input className="inputdata" type='text' />
                     </div>
 
                     <div className='data'>
                         <label htmlFor="phone">Phone</label>
-                        <input type='text' />
+                        <input className="inputdata" type='text' />
                     </div>
 
                     <div className='data'>
                         <label htmlFor="birthDate">Birth Date</label>
-                        <input type='text' />
+                        <input className="inputdata" type='text' />
                     </div>
 
                     <div className='data'>
                         <label htmlFor="dentalHistory">Dental History</label>
-                        <input type='text' />
+                        <input className="inputdata" type='text' />
                     </div>
 
                     <div className='data submit'>

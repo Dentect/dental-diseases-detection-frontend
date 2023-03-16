@@ -6,6 +6,8 @@ import DisplayDection from "./Display Detection";
 function ImageUpload() {
   const [image, setImages] = useState('');
   const [uploadedImage, setUploadedImages] = useState('');
+  const [loading, setloading] = useState(true);
+
 
   const handleChange = (e: any) => {
     const blob = new Blob([e.target.files[0]], { type: '*/*' });
@@ -34,12 +36,13 @@ function ImageUpload() {
   }
 
   return (
+
     <div className="upload">
 
-      <img className="images" src={uploadedImage} alt="" />
-      <button className="buttons">
+      <img className="images" src={uploadedImage}/>
+      <button className=" buttons" onClick={handleChange}>
         <label htmlFor="files" className="btn">Upload X-ray</label>
-        <input id="files" type="file" onChange={handleChange} />
+        <input id="files" type="file"/>
       </button>
       {/* <Link to={'/DisplayDection'}> */}
         <button className="buttons" onClick={handleApi}>Detect</button>

@@ -28,12 +28,12 @@ function EditPatient(props: any) {
     }
     
     return (
-        <div className="app container">
-            <div className="FormImage">
-                <img src={registerImage}></img>
+        <div className="row justify-content-center">
+            <div className="col-5 my-auto">
+                <img  src={registerImage}></img>
             </div>
 
-            <div className='form-wrapper'>
+            <div className='form-wrapper col-5'>
                 <h2>Register patient data</h2>
 
                 <form onSubmit={handleSubmit(onSubmit)}>

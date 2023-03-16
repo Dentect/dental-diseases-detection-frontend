@@ -9,7 +9,7 @@ export default function NavBar(props: any) {
         <Navbar className="navbar">
             <Container>
                 <Navbar.Brand href="#home"><img src={teeth} alt=""  width="50" height="50"/></Navbar.Brand>
-                <h1 className="me-auto">Upload X-Ray</h1>
+                <h1 className="me-auto"></h1>
                 <Nav className="ms-auto">
                     <Nav.Link href="#home">Home</Nav.Link>
                     <Nav.Link href="#Logout">Logout</Nav.Link>

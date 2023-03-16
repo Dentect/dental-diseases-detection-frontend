@@ -8,6 +8,8 @@ import PatientRegister from './Components/Add Patient Form';
 import DoctorLogin from './Components/Doctor Login Form';
 import EditPatient from './Components/Edit Patient Data';
 import Home from './Components/Home ';
+import MainFunctionalities from './Components/Main Functionalitioes';
+
 import { BrowserRouter, createBrowserRouter, Route, RouterProvider, Routes } from 'react-router-dom';
 
 
@@ -56,6 +58,7 @@ function App() {
         <Route  path="/Register" element={<DoctorRegister />}/>
           <Route  path='' element={<Home />} />
           <Route  path="/Login" element={<DoctorLogin />} />
+          <Route  path="//Main Functions" element={<MainFunctionalities />} />
           <Route  path="/ImageUpload" element={<ImageUpload />} />
           <Route  path="/DisplayDection" element={<DisplayDection />} />
           <Route  path="/PatientRegister" element={<PatientRegister />} />

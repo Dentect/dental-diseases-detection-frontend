@@ -28,59 +28,59 @@ function DoctorRegister(props: any) {
     }
 
     return (
-        <div className="app container">
+        <div className="row justify-content-center">
 
-            <div className="FormImage">
-                <img src={registerImage}></img>
+                <div className="col-md-5 my-auto col-sm-9">
+                    <img className="w-100" src={registerImage}></img>
+                </div>
+
+                <div className='form-wrapper col-md-5 col-sm-9'>
+                    <h2>Sign Up</h2>
+
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div className='data'>
+                            <label>First Name</label>
+                            <input className="inputdata" type='text' {...register("firstName")} />
+                            <label htmlFor="lastName">Last Name</label>
+                            <input className="inputdata" type='text' {...register("lastName")} />
+                        </div>
+
+                        <div className='data'>
+                            <label htmlFor="email">Email</label>
+                            <input className="inputdata" type='email'{...register("email", { required: true, pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/ })} />
+                        </div>
+
+                        <div className='data'>
+                            <label htmlFor="password">Password</label>
+                            <input className="inputdata" type='password'{...register("password", { required: true, minLength: 6 })} />
+                        </div>
+
+                        <div className='data'>
+                            <label htmlFor="medicalID">Medical ID</label>
+                            <input className="inputdata" type='text' {...register("medicalID")} />
+                        </div>
+
+                        <div className='data'>
+                            <label htmlFor="phone">Clinic Phone</label>
+                            <input className="inputdata" type='text' {...register("phone")} />
+                        </div>
+
+                        <div className='data'>
+                            <label htmlFor="address">Clinic Address</label>
+                            <input className="inputdata" type='text' {...register("address")} />
+                        </div>
+
+
+                        <div className='data submit'>
+                            <Link to={'/Login'}>
+                                <button type="submit" className="buttons" >Register Me</button>
+                            </Link>
+                        </div>
+                    </form>
+                </div>
             </div>
-
-            <div className='form-wrapper'>
-                <h2>Sign Up</h2>
-
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className='data'>
-                        <label>First Name</label>
-                        <input type='text' {...register("firstName")} />
-                        <label htmlFor="lastName">Last Name</label>
-                        <input type='text' {...register("lastName")} />
-                    </div>
-
-                    <div className='data'>
-                        <label htmlFor="email">Email</label>
-                        <input type='email'{...register("email", { required: true, pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/ })} />
-                    </div>
-
-                    <div className='data'>
-                        <label htmlFor="password">Password</label>
-                        <input type='password'{...register("password", { required: true, minLength: 6 })} />
-                    </div>
-
-                    <div className='data'>
-                        <label htmlFor="medicalID">Medical ID</label>
-                        <input type='text' {...register("medicalID")} />
-                    </div>
-
-                    <div className='data'>
-                        <label htmlFor="phone">Clinic Phone</label>
-                        <input type='text' {...register("phone")} />
-                    </div>
-
-                    <div className='data'>
-                        <label htmlFor="address">Clinic Address</label>
-                        <input type='text' {...register("address")} />
-                    </div>
-
-
-                    <div className='data submit'>
-                        <Link to={'/Login'}>
-                            <button type="submit" className="buttons" >Register Me</button>
-                        </Link>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-    );
+            
+            );
 }
 
 export default DoctorRegister;
