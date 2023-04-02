@@ -6,7 +6,6 @@ import DisplayDection from "./Display Detection";
 function ImageUpload() {
   const [image, setImages] = useState('');
   const [uploadedImage, setUploadedImages] = useState('');
-  const [loading, setloading] = useState(true);
 
 
   const handleChange = (e: any) => {
@@ -26,8 +25,6 @@ function ImageUpload() {
           console.log(res.data.xray.originalURL)
           const newURL = res.data.xray.originalURL;
           setUploadedImages(newURL);
-
-
     }).catch((err) => {
       console.log(err)
     })
@@ -40,13 +37,13 @@ function ImageUpload() {
     <div className="upload">
 
       <img className="images" src={uploadedImage}/>
-      <button className=" buttons" onClick={handleChange}>
+      <button className=" buttons" >
         <label htmlFor="files" className="btn">Upload X-ray</label>
-        <input id="files" type="file"/>
+        <input id="files" type="file" onChange={handleChange}/>
       </button>
-      {/* <Link to={'/DisplayDection'}> */}
+      <Link to={'/DisplayDection'}>
         <button className="buttons" onClick={handleApi}>Detect</button>
-      {/* </Link> */}
+      </Link>
     </div>
   );
 }

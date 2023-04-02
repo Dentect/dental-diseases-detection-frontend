@@ -10,55 +10,19 @@ import EditPatient from './Components/Edit Patient Data';
 import Home from './Components/Home ';
 import MainFunctionalities from './Components/Main Functionalitioes';
 
-import { BrowserRouter, createBrowserRouter, Route, RouterProvider, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-
-/*const routes = createBrowserRouter([
-  {
-    path: '/Login',
-    element: <DoctorLogin />
-  },
-  {
-    path:'/Register',
-    element:<DoctorRegister />
-  },
-  {
-    path:'/Home',
-    element:<Home />
-  },
-  {
-    path:'/PatientRegister',
-    element:<PatientRegister />
-  },
-  {
-    path:'/ImageUpload',
-    element:<ImageUpload />
-  },
-  {
-    path:'/DisplayDection',
-    element:<DisplayDection />
-  },
-]);*/
 
 function App() {
   return (
-      // 
-
-      // <Home />
-      // <DisplayDection />
-      // <ImageUpload />
-      // <RouterProvider router={routes}/>
-      // <PatientRegister />
-      // <DoctorLogin />
-      // <EditPatient />
-
       <BrowserRouter>
-      <NavBar />
+            <NavBar />
+
       <Routes>
         <Route  path="/Register" element={<DoctorRegister />}/>
           <Route  path='' element={<Home />} />
           <Route  path="/Login" element={<DoctorLogin />} />
-          <Route  path="//Main Functions" element={<MainFunctionalities />} />
+          <Route  path="/MainFunctions" element={<MainFunctionalities />} />
           <Route  path="/ImageUpload" element={<ImageUpload />} />
           <Route  path="/DisplayDection" element={<DisplayDection />} />
           <Route  path="/PatientRegister" element={<PatientRegister />} />

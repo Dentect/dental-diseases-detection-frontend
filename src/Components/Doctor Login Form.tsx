@@ -46,7 +46,7 @@ function DoctorLogin() {
                     </div>
 
                     <div className='data submit'>
-                        <Link to={'/Main Functions'}>
+                        <Link to={'/MainFunctions'}>
                             <button type="submit" className="buttons">Login</button>
                         </Link>
                     </div>

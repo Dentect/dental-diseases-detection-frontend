@@ -83,7 +83,7 @@ export default function DisplayDection(props: any) {
   }
   
   return (
-    <div className="app upload">
+    <div className="upload">
       <img className="images" src='https://firebasestorage.googleapis.com/v0/b/dental-diseases-detection.appspot.com/o/detections%2F238-2023-03-14%2003%3A10%3A15.858495.jpg?alt=media&token=95c22e18-985d-4491-94ec-e4cd727db30c' alt="" />
 
       <button className="buttons"  onClick={handleChange}>Print</button>
