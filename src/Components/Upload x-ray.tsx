@@ -41,9 +41,9 @@ function ImageUpload() {
         <label htmlFor="files" className="btn">Upload X-ray</label>
         <input id="files" type="file" onChange={handleChange}/>
       </button>
-      <Link to={'/DisplayDection'}>
+      {/* <Link to={'/DisplayDection'}> */}
         <button className="buttons" onClick={handleApi}>Detect</button>
-      </Link>
+      {/* </Link> */}
     </div>
   );
 }
