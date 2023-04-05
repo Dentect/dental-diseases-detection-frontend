@@ -22,6 +22,8 @@ export default function NavBar(props: any) {
                 return 'Display detection & report';
             case '/PatientRegister':
                 return 'Register patient data';
+            case '/ViewPatient':
+                return 'View patient data';
             default:
                 return 'Home';
         }
@@ -30,13 +32,13 @@ export default function NavBar(props: any) {
     let title = changeTitle();
 
     return (
-        <Navbar>
-                <Navbar.Brand href="/"><img src={teeth} alt="" width="50" height="50" /></Navbar.Brand>
-                <h2>{title}</h2>
-                <Nav>
-                    <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="#Logout">Logout</Nav.Link>
-                </Nav>
+        <Navbar className=''>
+            <Navbar.Brand href="/"><img src={teeth} alt="" width="50" height="50" /></Navbar.Brand>
+            <h2>{title}</h2>
+            <Nav>
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="#Logout">Logout</Nav.Link>
+            </Nav>
         </Navbar>
     );
 }

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import registerImage from '../assets/Register patient data.png';
 import { useForm } from 'react-hook-form';
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
@@ -10,8 +10,7 @@ import { Link } from "react-router-dom";
 function PatientRegister(props: any) {
 
 
-    const [post, setPost] = useState(null);
-
+    let navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -19,22 +18,21 @@ function PatientRegister(props: any) {
     } = useForm();
 
 
-    const baseURL = "http://localhost:3000/auth/signUp";
+    const baseURL = "http://localhost:3000/6408c437cd28f77798fbfd73/patients";
+
     async function onSubmit(data: any) {
-        console.log(data);
-        await axios.post("http://localhost:3000/auth/signUp")
+        try {
+            await axios.post(baseURL, data)
             .then(res => {
-                console.log(res)
+                console.log(res);
             })
+            console.log('hi')
+        } catch (error) {
+            console.log(error)
+        }
+
+        navigate("/Login", { replace: true })        
     }
-    // function onSubmit() {
-    //     axios.post(baseURL, {
-    //             title: "Hello World!",
-    //             body: "This is a new post."
-    //         }).then((response) => {
-    //             setPost(response.data);
-    //         });
-    // }
 
     return (
         <div className="row justify-content-center">
@@ -74,6 +72,12 @@ function PatientRegister(props: any) {
                         <label htmlFor="phone">Phone</label>
                         <input className="inputdata" type='text' />
                     </div>
+
+                    <div className='data'>
+                        <label htmlFor="phone">ID</label>
+                        <input className="inputdata" type='text' />
+                    </div>
+
 
                     <div className='data'>
                         <label htmlFor="birthDate">Birth Date</label>

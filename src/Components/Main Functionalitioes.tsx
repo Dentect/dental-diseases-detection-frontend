@@ -14,7 +14,7 @@ function MainFunctionalities() {
 
 
       <div className="col-5">
-        <Link to={''}>
+        <Link to={'/ViewPatient'}>
         <button className="buttons">View patient</button>
         </Link>
 

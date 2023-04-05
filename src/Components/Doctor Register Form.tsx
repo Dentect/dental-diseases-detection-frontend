@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import registerImage from '../assets/Register.png';
 import { useForm } from 'react-hook-form';
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
 
 function DoctorRegister(props: any) {
 
+    let navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -17,13 +18,20 @@ function DoctorRegister(props: any) {
 
 
     const baseURL = "http://localhost:3000/auth/signUp";
-    async function onSubmit(data: any) {
-        console.log(data);
 
-        await axios.post(baseURL, data)
+    async function onSubmit(data: any) {
+        try {
+            await axios.post(baseURL, data)
             .then(res => {
                 console.log(res);
             })
+
+            console.log('hi')
+        } catch (error) {
+            console.log(error)
+        }
+
+        navigate("/Login", { replace: true })        
     }
 
     return (
@@ -36,7 +44,7 @@ function DoctorRegister(props: any) {
             <div className='form-wrapper col-md-5 col-sm-9'>
                 <h2>Sign Up</h2>
 
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form>
                     <div className='data'>
                         <label>First Name</label>
                         <input className="inputdata" type='text' {...register("firstName", { required: true})} />
@@ -55,8 +63,13 @@ function DoctorRegister(props: any) {
                     </div>
 
                     <div className='data'>
-                        <label htmlFor="medicalID">Medical ID</label>
-                        <input className="inputdata" type='text' {...register("medicalID", { required: true})} />
+                        <label htmlFor="medicalId">Medical ID</label>
+                        <input className="inputdata" type='text' {...register("medicalId", { required: true})} />
+                    </div>
+
+                    <div className='data'>
+                        <label htmlFor="yearsOfExperience">Years Of Experience</label>
+                        <input className="inputdata" type='text' {...register("yearsOfExperience", { required: true, valueAsNumber: true})} />
                     </div>
 
                     <div className='data'>
@@ -71,10 +84,9 @@ function DoctorRegister(props: any) {
 
 
                     <div className='data submit'>
-                        {/* <Link to={'/Login'}> */}
-                            
-                            <button type="submit" className="buttons">Register Me</button>
-                        {/* </Link> */}
+                        <Link onClick={handleSubmit(onSubmit)} to={'/MainFunctions'}>
+                            <button type="submit" className="buttons" >Register Me</button>
+                        </Link>
                     </div>
                 </form>
             </div>

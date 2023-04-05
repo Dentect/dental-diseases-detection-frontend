@@ -120,6 +120,16 @@ h1 {
 
 }
 
+.patientInfo{
+  position: absolute;
+  width: 577px;
+  height: 329px;
+  left: calc(50% - 577px/2 - 0.5px);
+  top: calc(50% - 329px/2 - 64.5px);
+  background: rgba(217, 217, 217, 0.6);
+  border-radius: 14px;
+}
+
 
 
 /* Register from */
