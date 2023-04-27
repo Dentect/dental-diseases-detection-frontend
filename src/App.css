@@ -90,7 +90,7 @@ h1 {
   padding: 5px;
   align-items:center;
   width: 322px;
-  height: 104px
+  height: 104px;
 }
 
 .btn {
@@ -113,10 +113,10 @@ h1 {
 
 .images {
   position: absolute;
-  left: 263px;
-  top: 99px;
-  height: 50%;
-  width: 50%;
+  left: calc(50% - 750px/2 - 0.2px);
+  top: calc(50% - 600px/2 - 0.01px);
+  height: 75%;
+  width: 75%;
 
 }
 
@@ -180,3 +180,14 @@ button:hover {
   align-items: center;
 }
 
+.loading{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: -20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.9);
+}

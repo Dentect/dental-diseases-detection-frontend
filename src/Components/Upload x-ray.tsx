@@ -22,8 +22,8 @@ function ImageUpload() {
     formData.append('xrayDate', '2023-10-6');
 
     const response = axios.post(url, formData).then((res) => {
-          console.log(res.data.xray.originalURL)
-          const newURL = res.data.xray.originalURL;
+          console.log(res.data.xray.detection)
+          const newURL = res.data.xray.detection;
           setUploadedImages(newURL);
     }).catch((err) => {
       console.log(err)
@@ -37,12 +37,12 @@ function ImageUpload() {
     <div className="upload">
 
       <img className="images" src={uploadedImage}/>
-      <button className=" buttons" >
-        <label htmlFor="files" className="btn">Upload X-ray</label>
+      <button className=" buttons position-absolute bottom-0 start-0 my-4" >Upload X-ray
+        <label htmlFor="files" className="btn"></label>
         <input id="files" type="file" onChange={handleChange}/>
       </button>
       {/* <Link to={'/DisplayDection'}> */}
-        <button className="buttons" onClick={handleApi}>Detect</button>
+        <button className="buttons position-absolute bottom-0 end-0 my-4" onClick={handleApi}>Detect</button>
       {/* </Link> */}
     </div>
   );

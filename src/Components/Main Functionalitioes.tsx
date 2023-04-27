@@ -15,11 +15,15 @@ function MainFunctionalities() {
 
       <div className="col-5">
         <Link to={'/ViewPatient'}>
-        <button className="buttons">View patient</button>
+          <button className="buttons">View patient</button>
         </Link>
-
       </div>
-      {/* <button className="buttons"></button> */}
+
+      <div>
+        <Link to={'/Feedback'}>
+          <button className="buttons">Feedback</button>
+        </Link>
+      </div>
 
     </div>
   );

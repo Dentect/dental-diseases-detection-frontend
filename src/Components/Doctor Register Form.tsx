@@ -26,7 +26,6 @@ function DoctorRegister(props: any) {
                 console.log(res);
             })
 
-            console.log('hi')
         } catch (error) {
             console.log(error)
         }

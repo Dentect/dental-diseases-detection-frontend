@@ -18,11 +18,16 @@ function PatientRegister(props: any) {
     } = useForm();
 
 
-    const baseURL = "http://localhost:3000/6408c437cd28f77798fbfd73/patients";
+    const baseURL = "http://localhost:3000/dentists/patients";
 
     async function onSubmit(data: any) {
+        let config = {
+            headers: {
+             authorization: "value",
+            }
+          }
         try {
-            await axios.post(baseURL, data)
+            await axios.post(baseURL, data, config)
             .then(res => {
                 console.log(res);
             })
@@ -31,7 +36,7 @@ function PatientRegister(props: any) {
             console.log(error)
         }
 
-        navigate("/Login", { replace: true })        
+        navigate("/Login")        
     }
 
     return (
@@ -41,7 +46,7 @@ function PatientRegister(props: any) {
             </div>
 
             <div className='form-wrapper col-md-5 col-sm-9'>
-                <h2>Register patient data</h2>
+                <h2>Patient data</h2>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='data'>

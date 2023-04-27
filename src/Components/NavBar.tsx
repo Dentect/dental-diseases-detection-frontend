@@ -21,9 +21,13 @@ export default function NavBar(props: any) {
             case '/DisplayDection':
                 return 'Display detection & report';
             case '/PatientRegister':
-                return 'Register patient data';
+                return 'Register patient';
             case '/ViewPatient':
                 return 'View patient data';
+            case '/AboutUS':
+                return 'About Us';
+            case '/Feedback':
+                return 'Feedback';
             default:
                 return 'Home';
         }

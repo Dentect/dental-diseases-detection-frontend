@@ -1,27 +1,48 @@
 import { useEffect, useState } from "react";
 import registerImage from '../assets/Login.png';
-import { useForm } from 'react-hook-form';
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types'
+
+
 
 function DoctorLogin() {
 
+    const baseURL = "http://localhost:3000/auth/signIn";
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [token, setToken] = useState("");
+    const navigate = useNavigate();
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
+    // handle button click of login form
+    async function handleLogin() {
+        setError('');
+        setLoading(true);
+        
+        axios.post(baseURL, {email, password}).then(response => {
+            setLoading(false);
+            const t = response.headers['auth-token']
+            setToken(t)
+            console.log(response.headers['auth-token'])
+            navigate("/MainFunctions")    
 
+        }).catch(error => {
+            setLoading(false);
+            if (error.response.status === 401) setError(error.response.data.message);
+            else setError("Something went wrong. Please try again later.");
+        });
 
-    const baseURL = "http://localhost:3000/auth/signUp";
-    async function onSubmit(data: any) {
-        console.log(data);
-        await axios.post("http://localhost:3000/auth/signUp")
-            .then(res => {
-                console.log(res)
-            })
     }
+
+    async function onSubmit(data: any) {
+        data.preventDefault();
+        handleLogin();
+        setPassword("");
+        setEmail("");
+    };
+
 
     return (
         <div className="row justify-content-center">
@@ -33,28 +54,39 @@ function DoctorLogin() {
             <div className='form-wrapper col-md-5 col-sm-9'>
                 <h2>Login</h2>
 
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form>
 
                     <div className='data'>
                         <label htmlFor="email">Email</label>
-                        <input className="inputdata" type='email' {...register("email", { required: true, pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/ })} />
+                        <input className="inputdata" 
+                        type='email' 
+                        onChange={(e) => setEmail(e.target.value)}
+                        value={email} 
+                        // autoComplete="off"
+                        required/>
                     </div>
 
                     <div className='data'>
                         <label htmlFor="password">Password</label>
-                        <input className="inputdata" type='password' {...register("password", { required: true, minLength: 6 })} />
+                        <input className="inputdata" 
+                        type='password' 
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password} 
+                        required/>
                     </div>
 
                     <div className='data submit'>
-                        <Link to={'/MainFunctions'}>
+                        <Link onClick={onSubmit} to={'/MainFunctions'}>
                             <button type="submit" className="buttons">Login</button>
                         </Link>
                     </div>
+
+                    {loading ? <h2 className="loading">Loading...</h2> : ""}
+
                 </form>
             </div>
 
         </div>
     );
 }
-
 export default DoctorLogin;

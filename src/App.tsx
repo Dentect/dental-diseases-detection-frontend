@@ -10,28 +10,43 @@ import Home from './Components/Home ';
 import MainFunctionalities from './Components/Main Functionalitioes';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ViewPatient from './Components/Veiw Patient';
+import AboutUs from './Components/AboutUs';
+import Feedback from 'react-bootstrap/esm/Feedback';
 
+import useToken from './Components/UseToken';
 
 
 function App() {
+
+
+
+
   return (
+    <>
       <BrowserRouter>
-      <NavBar />
+        <NavBar />
 
-      <Routes>
-          <Route  path="/Register" element={<DoctorRegister />}/>
-          <Route  path='' element={<Home />} />
-          <Route  path="/Login" element={<DoctorLogin />} />
-          <Route  path="/MainFunctions" element={<MainFunctionalities />} />
-          <Route  path="/ImageUpload" element={<ImageUpload />} />
-          <Route  path="/DisplayDection" element={<DisplayDection />} />
-          <Route  path="/PatientRegister" element={<PatientRegister />} />
-          <Route  path="/ViewPatient" element={<ViewPatient />} />
-      </Routes>
+        <Routes>
+          <Route path="/Register" element={<DoctorRegister />} />
+          <Route path='' element={<Home />} />
+          <Route path="/Login" element={<DoctorLogin />} />
+          <Route path="/MainFunctions" element={<MainFunctionalities />} />
+          <Route path="/ImageUpload" element={<ImageUpload />} />
+          <Route path="/DisplayDection" element={<DisplayDection />} />
+          <Route path="/PatientRegister" element={<PatientRegister />} />
+          <Route path="/ViewPatient" element={<ViewPatient />} />
+          <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/Feedback" element={<Feedback />} />
 
-    </BrowserRouter>
+        </Routes>
 
+      </BrowserRouter>
+
+
+
+    </>
   );
+
 }
 
 export default App;
