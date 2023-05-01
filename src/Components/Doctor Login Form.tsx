@@ -1,44 +1,39 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import registerImage from '../assets/Login.png';
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import PropTypes from 'prop-types'
 
 
 
-function DoctorLogin() {
+function DoctorLogin(props:any) {
 
     const baseURL = "http://localhost:3000/auth/signIn";
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [token, setToken] = useState("");
+    // const [token, setToken] = useState("");
     const navigate = useNavigate();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
-    // handle button click of login form
-    async function handleLogin() {
+    async function onSubmit(data: any) {
+        data.preventDefault();
+
         setError('');
         setLoading(true);
         
         axios.post(baseURL, {email, password}).then(response => {
             setLoading(false);
             const t = response.headers['auth-token']
-            setToken(t)
+            props.onLogin(t)
             console.log(response.headers['auth-token'])
+            // if (response.status === 401) setError(response.data.message);
+            // else setError("Something went wrong. Please try again later.");
             navigate("/MainFunctions")    
 
         }).catch(error => {
             setLoading(false);
-            if (error.response.status === 401) setError(error.response.data.message);
-            else setError("Something went wrong. Please try again later.");
+            console.log(error);
         });
-
-    }
-
-    async function onSubmit(data: any) {
-        data.preventDefault();
-        handleLogin();
         setPassword("");
         setEmail("");
     };

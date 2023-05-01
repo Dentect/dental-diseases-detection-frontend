@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import teeth from '../assets/image9.png';
+import NavLink from './NavLink';
 
 export default function NavBar(props: any) {
 
@@ -39,9 +40,15 @@ export default function NavBar(props: any) {
         <Navbar className=''>
             <Navbar.Brand href="/"><img src={teeth} alt="" width="50" height="50" /></Navbar.Brand>
             <h2>{title}</h2>
+
             <Nav>
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="#Logout">Logout</Nav.Link>
+                <button className='buttons mx-5'>
+                    <NavLink target='/' text='Home'></NavLink>
+                </button>
+                
+                <button className='buttons mx-5'>
+                    <NavLink target='/' text='Logout'></NavLink>
+                </button>
             </Nav>
         </Navbar>
     );

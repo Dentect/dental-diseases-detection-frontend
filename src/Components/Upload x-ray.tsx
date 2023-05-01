@@ -1,7 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import DisplayDection from "./Display Detection";
 
 function ImageUpload() {
   const [image, setImages] = useState('');
@@ -34,15 +32,14 @@ function ImageUpload() {
 
   return (
 
-    <div className="upload">
-
-      <img className="images" src={uploadedImage}/>
-      <button className=" buttons position-absolute bottom-0 start-0 my-4" >Upload X-ray
+    <div className=" col upload">
+      <img  src={uploadedImage}/>
+      <button className=" buttons m-4" >Upload X-ray
         <label htmlFor="files" className="btn"></label>
         <input id="files" type="file" onChange={handleChange}/>
       </button>
       {/* <Link to={'/DisplayDection'}> */}
-        <button className="buttons position-absolute bottom-0 end-0 my-4" onClick={handleApi}>Detect</button>
+        <button className="buttons m-4" onClick={handleApi}>Detect</button>
       {/* </Link> */}
     </div>
   );

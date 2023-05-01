@@ -67,27 +67,21 @@ h1 {
 .upload {
   background: rgba(255, 255, 255, 0.5);
   border-radius: 54px;
-  position: absolute;
+  margin: auto;
   width: 50%;
   height: 70%;
-  left: 494px;
-  top: 197px;
-  display: flex;
-  justify-content: center;
-  align-items: end;
+  text-align: center;
 }
 
+
 .buttons {
-  position: relative;
   background: #088CAA;
   border-radius: 18px;
   border-color: transparent;
-  margin: 10%;
   color: white;
   font-family: 'Akshar';
   font-weight: bold;
   font-size: 30px;
-  padding: 5px;
   align-items:center;
   width: 322px;
   height: 104px;
@@ -120,14 +114,21 @@ h1 {
 
 }
 
+li{
+  list-style-type:none;
+  align-items: start;
+  font-size: x-large;
+  font-style: oblique;
+}
+
 .patientInfo{
-  position: absolute;
-  width: 577px;
+  margin: auto;
+  width: 50%;
   height: 329px;
-  left: calc(50% - 577px/2 - 0.5px);
-  top: calc(50% - 329px/2 - 64.5px);
   background: rgba(217, 217, 217, 0.6);
   border-radius: 14px;
+  text-align: start;
+  
 }
 
 
@@ -149,8 +150,8 @@ h1 {
 
 
 label {
-  margin-bottom: 0.5em;
-  color: #444;
+  margin: 5px;
+  color: #088CAA;
   font-weight: bold;
 }
 
@@ -164,7 +165,7 @@ label {
 
 
 
-button:hover {
+.buttons:hover {
   background-color: #088caabc;
   color: #fefefe;
 }
@@ -190,4 +191,22 @@ button:hover {
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.9);
+}
+
+
+
+/* stars */
+
+.stars {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 100px;
+}
+.on {
+  color: #f9e001;
+}
+.off {
+  color: #ccc;
 }
