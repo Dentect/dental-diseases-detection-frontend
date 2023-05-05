@@ -44,14 +44,14 @@ function App() {
       <BrowserRouter>
         <NavBar />
 
-
         <Routes>
+          
           <Route path="/Register" element={<DoctorRegister />} />
           <Route path='' element={<Home />} />
           <Route path="/Login" element={<DoctorLogin onLogin = {handleLogin}/>} />
           <Route path="/MainFunctions" element={<MainFunctionalities token = {token}/>} />
           <Route path="/ImageUpload" element={<ImageUpload setDetectedImage = {detectedImage} id={clinicId} token={token}/>} />
-          <Route path="/DisplayDection" element={<DisplayDection detectedImage = {uploadedImage} id={clinicId}/>} />
+          <Route path="/DisplayDection" element={<DisplayDection image = {uploadedImage} id={clinicId}/>} />
           <Route path="/PatientRegister" element={<PatientRegister token={token}/>} />
           <Route path="/ViewPatient" element={<ViewPatient  setId = {patientId} token={token}/>} />
           <Route path="/AboutUs" element={<AboutUs />} />

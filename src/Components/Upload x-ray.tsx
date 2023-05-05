@@ -1,18 +1,19 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 function ImageUpload(props: any) {
+
   const [image, setImages] = useState('');
   const [uploadedImage, setUploadedImages] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-
-  const url = `http://localhost:3000/patients/${props.id}/xrays`;
-
-
-  console.log(props.token)
+  const {
+    register,
+    handleSubmit
+  } = useForm();
 
   const handleChange = (e: any) => {
     const blob = new Blob([e.target.files[0]], { type: '*/*' });
@@ -21,8 +22,13 @@ function ImageUpload(props: any) {
     setImages(e.target.files[0])
   }
 
-  const handleApi = () => {
+  const handleApi = (data: any) => {
     setLoading(true);
+
+
+
+    const url = `http://localhost:3000/patients/${data.clinicId}/xrays`;
+
 
 
     let config = {
@@ -32,12 +38,12 @@ function ImageUpload(props: any) {
     }
     const formData = new FormData();
     formData.append('xray', image);
-    formData.append('xrayDate', '2023-10-6');
+    formData.append('xrayDate',data.xrayDate);
 
     axios.post(url, formData, config).then((res) => {
       setLoading(false);
-      console.log(res.data.xray.detection)
-      const newURL = res.data.xray.detection;
+      console.log(res.data.xray.detectionURL)
+      const newURL = res.data.xray.detectionURL;
       props.setDetectedImage(newURL);
       navigate("/DisplayDection");
 
@@ -50,20 +56,40 @@ function ImageUpload(props: any) {
 
   return (
 
-    <div className="newUpload">
+    <div>
+      <div className="upload">
 
-      <img className="images" src={uploadedImage} />
-      <button className="buttons position-absolute bottom-0 start-0 m-4" >Upload X-ray
-        <label htmlFor="files" className="btn"></label>
-        <input id="files" type="file" onChange={handleChange} />
-      </button>
-      {/* <Link to={'/DisplayDection'}> */}
-      <button className="buttons position-absolute bottom-0 end-0 my-4" onClick={handleApi}>Detect</button>
-      {/* </Link> */}
+        <div className='m-5'>
+          <label htmlFor="Id">ID</label>
+          <input className="inputdata m-5" type='text' {...register("clinicId", { required: true })} />
+          <label htmlFor="date">X-Ray Date</label>
+          <input className="inputdata m-5" type='date' {...register("xrayDate", { required: true })} />
+        </div>
+
+        <div>
+          <div>
+            <img className="images" src={uploadedImage} />
+          </div>
+        </div>
+
+
+        <label className="buttons m-4 p-4">
+          <input type="file" onChange={handleChange} />
+          Upload X-ray
+        </label>
+
+        <button className="buttons m-4" onClick={handleSubmit(handleApi)}>Detect</button>
+
+
+      </div>
+      
       {loading ? <h2 className="loading">Loading...</h2> : ""}
 
     </div>
+
+
   );
+
 }
 
 export default ImageUpload;

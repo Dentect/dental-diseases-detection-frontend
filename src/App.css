@@ -40,23 +40,22 @@ h1 {
 .homeBox {
   background: rgba(255, 255, 255, 0.5);
   border-radius: 54px;
-  position: absolute;
+  margin: auto;
+  margin-top: 10%;
   width: 50%;
   height: 70%;
-  left: 494px;
-  top: 197px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#files {
+
+
+input[type="file"] {
   display: none;
-  visibility: hidden;
-  border: none;
-  outline: none;
 }
+
 
 .navbar {
   /* display: flex; */
@@ -69,8 +68,8 @@ h1 {
   background: rgba(255, 255, 255, 0.5);
   border-radius: 54px;
   margin: auto;
-  width: 50%;
-  height: 70%;
+  width: 70%;
+  height: 90%;
   text-align: center;
 }
 
@@ -83,7 +82,6 @@ h1 {
   font-family: 'Akshar';
   font-weight: bold;
   font-size: 30px;
-  align-items:center;
   width: 322px;
   height: 95px;
 }
@@ -101,7 +99,7 @@ h1 {
   height: 104px;
 }
 
-.btn {
+/* .btn {
   width: 322px;
   height: 104px;
   position: absolute;
@@ -117,16 +115,13 @@ h1 {
   border: none;
   outline: none;
 
-}
+} */
 
 .images {
-  /* position: absolute; */
-  margin: auto;
   left: calc(50% - 750px/2 - 0.2px);
   top: calc(50% - 600px/2 - 0.01px);
-  height: 75%;
-  width: 75%;
-
+  height: 100%;
+  width: 90%;
 }
 
 li{
@@ -199,14 +194,15 @@ label {
 
 .loading{
   position: absolute;
-  width: 100vw;
-  height: 100vh;
+  width:100%;
+  height: 100%;
+  top: 0;
   left: 0;
-  top: -20px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.9);
+
 }
 
 

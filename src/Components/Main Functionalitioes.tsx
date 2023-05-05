@@ -12,7 +12,9 @@ function MainFunctionalities(props: any) {
           <button className="buttons m-5">Register patient</button>
         </Link>
 
-
+        <Link to={'/ImageUpload'}>
+          <button className="buttons m-5">Upload X-Ray</button>
+        </Link>
 
         <Link to={'/ViewPatient'}>
           <button className="buttons m-5">View patient</button>
