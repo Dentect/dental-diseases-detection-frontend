@@ -1,19 +1,20 @@
 import axios, { AxiosResponse } from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import { useTable } from "react-table";
+import { Link } from "react-router-dom";
 
 function ViewPatient(props: any) {
 
 
   const [response, setResponse] = useState<AxiosResponse | null | void>()
-  let navigate = useNavigate();
 
   const {
     register,
     handleSubmit
   } = useForm();
+
+  console.log(props.token)
+
 
 
   async function onSubmit(data: any) {
@@ -73,14 +74,10 @@ function ViewPatient(props: any) {
 
       <Link to={''}>
         <button className="buttons m-4">Old X-Rays</button>
-
       </Link>
       <Link to={'/ImageUpload'}>
         <button className="buttons m-4">Upload X-ray</button>
-
       </Link>
-
-
     </div>
 
   );

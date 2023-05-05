@@ -1,55 +1,135 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import teeth from '../assets/image9.png';
-import NavLink from './NavLink';
 
-export default function NavBar(props: any) {
+export default function NavBar() {
 
     useLocation();
+    // Login & register &About us
+    const case1 = {
+        link1: {
+            text: 'Home',
+            target: '/'
+        },
+        link2: {
+            text: 'About Us',
+            target: '/AboutUs'
+        }
+    }
+    // Home page
+    const case2 = {
+        link1: {
+            text: 'Login',
+            target: '/Login'
+        },
+        link2: {
+            text: 'About Us',
+            target: '/AboutUs'
+        }
+    }
+    // Main Functons
+    const case3 = {
+        link1: {
+            text: 'About Us',
+            target: '/AboutUs'
+        },
+        link2: {
+            text: 'Logout',
+            target: '/'
+        }
+    }
+
+    // Any page
+    const case4 = {
+        link1: {
+            text: 'Home',
+            target: '/MainFunctions'
+        },
+        link2: {
+            text: 'Logout',
+            target: '/'
+        }
+    }
 
     const changeTitle = () => {
         switch (window.location.pathname) {
             case '/Register':
-                return 'Register';
+                return {
+                    title: 'Register',
+                    ...case1
+                };
             case '/Login':
-                return 'LogIn';
+                return {
+                    title: 'LogIn',
+                    ...case1
+                };
             case '/MainFunctions':
-                return 'Main functionality';
+                return {
+                    title: 'Main functionality',
+                    ...case3
+                };
             case '/ImageUpload':
-                return 'Upload X-ray';
+                return {
+                    title: 'Upload X-ray',
+                    ...case4
+                };
             case '/DisplayDection':
-                return 'Display detection & report';
+                return {
+                    title: 'Display detection & report',
+                    ...case4
+                };
             case '/PatientRegister':
-                return 'Register patient';
+                return {
+                    title: 'Register patient',
+                    ...case4
+                };
+
             case '/ViewPatient':
-                return 'View patient data';
-            case '/AboutUS':
-                return 'About Us';
+                return {
+                    title: 'View patient data',
+                    ...case4
+                };
+
+            case '/AboutUs':
+                return {
+                    title: 'About Us',
+                    ...case1
+                };
+
             case '/Feedback':
-                return 'Feedback';
+                return {
+                    title: 'Feedback',
+                    ...case4
+                };
+
             default:
-                return 'Home';
+                return {
+                    title: 'Dentect',
+                    ...case2
+                };
+
         }
     }
 
-    let title = changeTitle();
+    let navBar = changeTitle();
 
     return (
         <Navbar className=''>
-            <Navbar.Brand href="/"><img src={teeth} alt="" width="50" height="50" /></Navbar.Brand>
-            <h2>{title}</h2>
 
-            <Nav>
-                <button className='buttons mx-5'>
-                    <NavLink target='/' text='Home'></NavLink>
+            <Navbar.Brand  className="mx-5" href="/"><img src={teeth} alt="" width="100" height="100" /></Navbar.Brand>
+            <h2>{navBar?.title}</h2>
+        
+            <Nav className="ms-auto">
+                <button className='navButtons mx-3'>
+                    <Nav.Link href={navBar?.link1.target}>{navBar?.link1.text}</Nav.Link>
                 </button>
-                
-                <button className='buttons mx-5'>
-                    <NavLink target='/' text='Logout'></NavLink>
+
+                <button className='navButtons mx-3'>
+                    <Nav.Link href={navBar?.link2.target}>{navBar?.link2.text}</Nav.Link>
                 </button>
             </Nav>
+
         </Navbar>
     );
 }

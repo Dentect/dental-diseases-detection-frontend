@@ -57,7 +57,7 @@ function DoctorLogin(props:any) {
                         type='email' 
                         onChange={(e) => setEmail(e.target.value)}
                         value={email} 
-                        // autoComplete="off"
+                        autoComplete="off"
                         required/>
                     </div>
 

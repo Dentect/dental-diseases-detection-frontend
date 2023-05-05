@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import registerImage from '../assets/Register patient data.png';
 import { useForm } from 'react-hook-form';
 import axios from "axios";
