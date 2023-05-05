@@ -16,6 +16,7 @@ import ViewPatient from './Components/Veiw Patient';
 import AboutUs from './Components/AboutUs';
 import Feedback from './Components/Feedback';
 import useToken from './Components/UseToken';
+import OTP from './Components/OTP';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
   const [token, setToken] = useState(null);
   const [clinicId, setClinicId] = useState(null);
   const [uploadedImage, setUploadedImages] = useState(null);
+  const [email, setEmail] = useState(null);
 
 
 
@@ -38,6 +40,9 @@ function App() {
     setUploadedImages(newImage);
   };
 
+  const handleRegister = (newEmail: any) => {
+    setEmail(newEmail)
+  }
 
   return (
     <>
@@ -46,16 +51,18 @@ function App() {
 
         <Routes>
           
-          <Route path="/Register" element={<DoctorRegister />} />
+          <Route path="/Register" element={<DoctorRegister setEmail = {handleRegister}/>} />
           <Route path='' element={<Home />} />
           <Route path="/Login" element={<DoctorLogin onLogin = {handleLogin}/>} />
           <Route path="/MainFunctions" element={<MainFunctionalities token = {token}/>} />
           <Route path="/ImageUpload" element={<ImageUpload setDetectedImage = {detectedImage} id={clinicId} token={token}/>} />
           <Route path="/DisplayDection" element={<DisplayDection image = {uploadedImage} id={clinicId}/>} />
-          <Route path="/PatientRegister" element={<PatientRegister token={token}/>} />
+          <Route path="/PatientRegister" element={<PatientRegister token = {token}/>} />
           <Route path="/ViewPatient" element={<ViewPatient  setId = {patientId} token={token}/>} />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/Feedback" element={<Feedback />} />
+          <Route path="/MailVerification" element={<OTP email={email}/>} />
+
 
         </Routes>
 

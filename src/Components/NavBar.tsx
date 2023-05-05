@@ -102,6 +102,13 @@ export default function NavBar() {
                     title: 'Feedback',
                     ...case4
                 };
+            
+            case '/MailVerification':
+                return {
+                    title: 'Mail Verification',
+                    ...case1
+                };
+    
 
             default:
                 return {

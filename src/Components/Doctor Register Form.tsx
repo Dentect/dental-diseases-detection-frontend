@@ -23,6 +23,7 @@ function DoctorRegister(props: any) {
         try {
             await axios.post(baseURL, data)
             .then(res => {
+                props.setEmail(data.email)
                 console.log(res);
             })
 
@@ -30,7 +31,7 @@ function DoctorRegister(props: any) {
             console.log(error)
         }
 
-        navigate("/Login", { replace: true })        
+        navigate("/MailVerification", { replace: true })        
     }
 
     return (
@@ -72,20 +73,18 @@ function DoctorRegister(props: any) {
                     </div>
 
                     <div className='data'>
-                        <label htmlFor="phone">Clinic Phone</label>
-                        <input className="inputdata" type='text' {...register("phone")} />
+                        <label htmlFor="clinicPhone">Clinic Phone</label>
+                        <input className="inputdata" type='text' {...register("clinicPhone")} />
                     </div>
 
                     <div className='data'>
-                        <label htmlFor="address">Clinic Address</label>
-                        <input className="inputdata" type='text' {...register("address")} />
+                        <label htmlFor="clinicAddress">Clinic Address</label>
+                        <input className="inputdata" type='text' {...register("clinicAddress")} />
                     </div>
 
 
                     <div className='data submit'>
-                        <Link onClick={handleSubmit(onSubmit)} to={'/MainFunctions'}>
-                            <button type="submit" className="buttons" >Register Me</button>
-                        </Link>
+                            <button type="submit" className="buttons" onClick={handleSubmit(onSubmit)}>Register Me</button>
                     </div>
                 </form>
             </div>
