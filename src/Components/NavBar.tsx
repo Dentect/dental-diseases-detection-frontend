@@ -108,6 +108,11 @@ export default function NavBar() {
                     title: 'Mail Verification',
                     ...case1
                 };
+            case '/ViewOldXrays':
+                return{
+                    title: 'View Old X-rays',
+                    ...case4
+                };
     
 
             default:

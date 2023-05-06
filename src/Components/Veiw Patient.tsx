@@ -7,6 +7,8 @@ function ViewPatient(props: any) {
 
 
   const [response, setResponse] = useState<AxiosResponse | null | void>()
+  const [xrays, setXrays] = useState<AxiosResponse | null | void>()
+
 
   const {
     register,
@@ -17,7 +19,7 @@ function ViewPatient(props: any) {
 
 
 
-  async function onSubmit(data: any) {
+  async function ViewPatient(data: any) {
 
     props.setId(data.clinicId)
     const baseURL = `http://localhost:3000/dentists/patients/${data.clinicId}`;
@@ -41,6 +43,31 @@ function ViewPatient(props: any) {
   console.log(response)
 
 
+  async function ViewOldXrays(data: any) {
+
+    const baseURL = `http://localhost:3000/patients/${props.id}/xrays`;
+
+    let config = {
+      headers: {
+        authorization: props.token,
+      }
+    }
+    try {
+      await axios.get(baseURL, config)
+        .then(res => {
+          props.xrays(res.data)
+          setXrays(res.data);
+          console.log(res);
+        })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  console.log(xrays)
+
+
+
   return (
 
     <div className="col upload">
@@ -48,7 +75,7 @@ function ViewPatient(props: any) {
       <div className='m-5'>
         <label htmlFor="Id">ID</label>
         <input className="inputdata m-5" type='text' {...register("clinicId", { required: true })} />
-        <button className="buttons" onClick={handleSubmit(onSubmit)}>View</button>
+        <button className="buttons" onClick={handleSubmit(ViewPatient)}>View</button>
       </div>
 
       <div className="patientInfo">
@@ -72,8 +99,8 @@ function ViewPatient(props: any) {
         </div>
       </div>
 
-      <Link to={''}>
-        <button className="buttons m-4">Old X-Rays</button>
+      <Link to={'/ViewOldXrays'}>
+        <button className="buttons m-4" onChange={ViewOldXrays}>Old X-Rays</button>
       </Link>
       <Link to={'/ImageUpload'}>
         <button className="buttons m-4">Upload X-ray</button>

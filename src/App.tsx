@@ -17,6 +17,7 @@ import AboutUs from './Components/AboutUs';
 import Feedback from './Components/Feedback';
 import useToken from './Components/UseToken';
 import OTP from './Components/OTP';
+import ViewXrays from './Components/Old X-Rays';
 
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
   const [clinicId, setClinicId] = useState(null);
   const [uploadedImage, setUploadedImages] = useState(null);
   const [email, setEmail] = useState(null);
+  const [xrays, setXrays] = useState(null);
+
 
 
 
@@ -44,6 +47,10 @@ function App() {
     setEmail(newEmail)
   }
 
+  const oldXrays = (newXrays: any) => {
+    setXrays(newXrays)
+  }
+
   return (
     <>
       <BrowserRouter>
@@ -55,15 +62,15 @@ function App() {
           <Route path='' element={<Home />} />
           <Route path="/Login" element={<DoctorLogin onLogin = {handleLogin}/>} />
           <Route path="/MainFunctions" element={<MainFunctionalities token = {token}/>} />
-          <Route path="/ImageUpload" element={<ImageUpload setDetectedImage = {detectedImage} id={clinicId} token={token}/>} />
-          <Route path="/DisplayDection" element={<DisplayDection image = {uploadedImage} id={clinicId}/>} />
+          <Route path="/ImageUpload" element={<ImageUpload setDetectedImage = {detectedImage} id = {clinicId} token = {token}/>} />
+          <Route path="/DisplayDection" element={<DisplayDection image = {uploadedImage} id = {clinicId}/>} />
           <Route path="/PatientRegister" element={<PatientRegister token = {token}/>} />
-          <Route path="/ViewPatient" element={<ViewPatient  setId = {patientId} token={token}/>} />
+          <Route path="/ViewPatient" element={<ViewPatient  setId = {patientId} token = {token} setXrays = {oldXrays}/>} />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/Feedback" element={<Feedback />} />
-          <Route path="/MailVerification" element={<OTP email={email}/>} />
-
-
+          <Route path="/MailVerification" element={<OTP email = {email}/>} />
+          <Route path="/ViewOldXrays" element={<ViewXrays xrays = {xrays}/>} />
+          
         </Routes>
 
       </BrowserRouter>
