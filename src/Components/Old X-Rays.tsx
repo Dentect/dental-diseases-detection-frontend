@@ -1,17 +1,24 @@
-import axios, { AxiosResponse } from "axios";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-
 function ViewXrays(props: any) {
 
+  var images = (props.xrays).map(function (image: any) {
+    return (
+
+      <div className="upload my-5">
+        <h1>Original X-ray</h1>
+        <img className="images my-3" src={image.originalURL} alt="" />
+        <h1>Detected X-ray</h1>
+        <img className="images my-3" src={image.detectionURL} alt="" />
+
+      </div>
+    );
+  });
   return (
 
-    <div className="col upload">
 
-      <div className="patientInfo">
-      <img className="images" src={props.xrays} alt="" />
-      </div>
+    <div className="col ">
+
+        {images}
+        {/* <img className="images" src={props.xrays[1].detectionURL} alt="" /> */}
 
     </div>
 

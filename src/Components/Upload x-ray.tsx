@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 function ImageUpload(props: any) {
@@ -25,29 +25,24 @@ function ImageUpload(props: any) {
   const handleApi = (data: any) => {
     setLoading(true);
 
-
-
     const url = `http://localhost:3000/patients/${data.clinicId}/xrays`;
-
-
 
     let config = {
       headers: {
         authorization: props.token,
       }
     }
+
     const formData = new FormData();
     formData.append('xray', image);
     formData.append('xrayDate',data.xrayDate);
 
     axios.post(url, formData, config).then((res) => {
       setLoading(false);
-      console.log(res.data.xray.detectionURL)
       const newURL = res.data.xray.detectionURL;
       props.setDetectedImage(newURL);
       navigate("/DisplayDection");
-
-
+      
     }).catch((err) => {
       setLoading(false);
       console.log(err);

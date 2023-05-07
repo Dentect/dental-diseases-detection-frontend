@@ -25,7 +25,6 @@ function DoctorLogin(props:any) {
             setLoading(false);
             const t = response.headers['auth-token']
             props.onLogin(t)
-            console.log(response.headers['auth-token'])
             // if (response.status === 401) setError(response.data.message);
             // else setError("Something went wrong. Please try again later.");
             navigate("/MainFunctions")    

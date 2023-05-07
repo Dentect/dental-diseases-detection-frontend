@@ -4,9 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 function OTP(props: any) {
 
-    console.log(props.email)
-
-
     const baseURL = 'http://localhost:3000/auth/verifyAccount';
     const [OTP, SetOTP] = useState("");
     const [loading, setLoading] = useState(false);
@@ -17,10 +14,6 @@ function OTP(props: any) {
 
         axios.post(baseURL, {email: props.email, OTP}).then(response => {
             setLoading(false);
-            console.log(response.data);
-
-
-
             navigate("/MainFunctions")
 
         }).catch(error => {

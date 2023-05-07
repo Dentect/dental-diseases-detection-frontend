@@ -15,7 +15,7 @@ import MainFunctionalities from './Components/Main Functionalitioes';
 import ViewPatient from './Components/Veiw Patient';
 import AboutUs from './Components/AboutUs';
 import Feedback from './Components/Feedback';
-import useToken from './Components/UseToken';
+// import useToken from './Components/UseToken';
 import OTP from './Components/OTP';
 import ViewXrays from './Components/Old X-Rays';
 

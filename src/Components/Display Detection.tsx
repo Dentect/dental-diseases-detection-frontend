@@ -14,9 +14,12 @@ export default function DisplayDection(props: any) {
 
 
   return (
-    <div className="upload">
-      <img className="images" src={props.detectedImage} alt="" />
-      <button className="buttons">Print</button>
+    <div className="upload my-5">
+      <img className="images my-5" src={props.image} alt="" />
+      <div className="pa">
+
+      </div>
+      <button className="buttons m-4">Print</button>
     </div>
   );
 }

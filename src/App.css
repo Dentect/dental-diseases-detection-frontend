@@ -1,8 +1,12 @@
 body {
   background-color: #088CAA;
   background-image: url('./assets/image\ 15.png');
+  /* background-repeat: no-repeat; */
   background-size: cover;
-  overflow-x: hidden;
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 

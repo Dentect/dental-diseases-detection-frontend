@@ -8,9 +8,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 function PatientRegister(props: any) {
 
-
-    console.log(props)
-
     let navigate = useNavigate();
     const {
         register,
@@ -23,7 +20,6 @@ function PatientRegister(props: any) {
 
     async function onSubmit(data: any) {
 
-        console.log("hiiiii")
         let config = {
             headers: {
              authorization:  props.token,
@@ -32,10 +28,7 @@ function PatientRegister(props: any) {
         try {
             await axios.post(baseURL, data, config)
             .then(res => {
-                console.log('hi')
-                console.log(res);
             })
-            console.log('hi')
         } catch (error) {
             console.log(error)
         }
