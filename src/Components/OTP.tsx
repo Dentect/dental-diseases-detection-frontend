@@ -14,7 +14,7 @@ function OTP(props: any) {
 
         axios.post(baseURL, {email: props.email, OTP}).then(response => {
             setLoading(false);
-            navigate("/MainFunctions")
+            navigate("/MainFunctions", { replace: true })
 
         }).catch(error => {
             setLoading(false);
@@ -29,7 +29,7 @@ function OTP(props: any) {
                 <h2>Mail verification</h2>
 
                 <div className='data'>
-                    <label htmlFor="OTP">OTP</label>
+                    <label htmlFor="OTP" className='dataStyle'>OTP</label>
                     <input className="inputdata"
                         type='text'
                         onChange={(e) => SetOTP(e.target.value)}

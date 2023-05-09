@@ -27,7 +27,7 @@ function DoctorLogin(props:any) {
             props.onLogin(t)
             // if (response.status === 401) setError(response.data.message);
             // else setError("Something went wrong. Please try again later.");
-            navigate("/MainFunctions")    
+            navigate("/MainFunctions", { replace: true })    
 
         }).catch(error => {
             setLoading(false);
@@ -51,7 +51,7 @@ function DoctorLogin(props:any) {
                 <form>
 
                     <div className='data'>
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email" className='dataStyle'>Email</label>
                         <input className="inputdata" 
                         type='email' 
                         onChange={(e) => setEmail(e.target.value)}
@@ -61,7 +61,7 @@ function DoctorLogin(props:any) {
                     </div>
 
                     <div className='data'>
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor="password" className='dataStyle'>Password</label>
                         <input className="inputdata" 
                         type='password' 
                         onChange={(e) => setPassword(e.target.value)}

@@ -46,39 +46,39 @@ function DoctorRegister(props: any) {
 
                 <form>
                     <div className='data'>
-                        <label>First Name</label>
+                        <label className='dataStyle'>First Name</label>
                         <input className="inputdata" type='text' {...register("firstName", { required: true})} />
                         <label htmlFor="lastName">Last Name</label>
                         <input className="inputdata" type='text' {...register("lastName", { required: true})} />
                     </div>
 
                     <div className='data'>
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email" className='dataStyle'>Email</label>
                         <input className="inputdata" type='email'{...register("email", { required: true, pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/ })} />
                     </div>
 
                     <div className='data'>
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor="password" className='dataStyle'>Password</label>
                         <input className="inputdata" type='password'{...register("password", { required: true, minLength: 6 })} />
                     </div>
 
                     <div className='data'>
-                        <label htmlFor="medicalId">Medical ID</label>
+                        <label htmlFor="medicalId" className='dataStyle'>Medical ID</label>
                         <input className="inputdata" type='text' {...register("medicalId", { required: true})} />
                     </div>
 
                     <div className='data'>
-                        <label htmlFor="yearsOfExperience">Years Of Experience</label>
+                        <label htmlFor="yearsOfExperience" className='dataStyle'>Years Of Experience</label>
                         <input className="inputdata" type='text' {...register("yearsOfExperience", { required: true, valueAsNumber: true})} />
                     </div>
 
                     <div className='data'>
-                        <label htmlFor="clinicPhone">Clinic Phone</label>
+                        <label htmlFor="clinicPhone" className='dataStyle'>Clinic Phone</label>
                         <input className="inputdata" type='text' {...register("clinicPhone")} />
                     </div>
 
                     <div className='data'>
-                        <label htmlFor="clinicAddress">Clinic Address</label>
+                        <label htmlFor="clinicAddress" className='dataStyle'>Clinic Address</label>
                         <input className="inputdata" type='text' {...register("clinicAddress")} />
                     </div>
 

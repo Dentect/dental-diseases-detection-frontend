@@ -24,9 +24,9 @@ function Feedback(props: any) {
                     })}
                 </div>
                 <div className='data'>
-                <label>Notes</label>
+                <label className='dataStyle'>Notes</label>
 
-                <input className="inputdata" type='email' />
+                <input className="inputdata"/>
 
                 </div>
             </div>

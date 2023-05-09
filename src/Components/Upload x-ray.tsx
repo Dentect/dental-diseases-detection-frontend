@@ -39,9 +39,9 @@ function ImageUpload(props: any) {
 
     axios.post(url, formData, config).then((res) => {
       setLoading(false);
-      const newURL = res.data.xray.detectionURL;
-      props.setDetectedImage(newURL);
-      navigate("/DisplayDection");
+      const xRay = res.data.xray;
+      props.setDetectedImage(xRay);
+      navigate("/DisplayDection", { replace: true });
       
     }).catch((err) => {
       setLoading(false);
@@ -55,15 +55,15 @@ function ImageUpload(props: any) {
       <div className="upload">
 
         <div className='m-5'>
-          <label htmlFor="Id">ID</label>
+          <label htmlFor="Id" className='dataStyle'>ID</label>
           <input className="inputdata m-5" type='text' {...register("clinicId", { required: true })} />
-          <label htmlFor="date">X-Ray Date</label>
+          <label htmlFor="date" className='dataStyle'>X-Ray Date</label>
           <input className="inputdata m-5" type='date' {...register("xrayDate", { required: true })} />
         </div>
 
         <div>
           <div>
-            <img className="images" src={uploadedImage} />
+            <img className="images" src={uploadedImage} alt=""/>
           </div>
         </div>
 
@@ -81,7 +81,6 @@ function ImageUpload(props: any) {
       {loading ? <h2 className="loading">Loading...</h2> : ""}
 
     </div>
-
 
   );
 

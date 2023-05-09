@@ -54,7 +54,7 @@ function ViewPatient(props: any) {
         .then(res => {
           props.setXrays(res.data);
           setLoading(false);
-          navigate("/ViewOldXrays");
+          navigate("/ViewOldXrays", { replace: true });
         })
     } catch (error) {
       console.log(error);
@@ -68,26 +68,26 @@ function ViewPatient(props: any) {
       <div className="col upload">
 
         <div className='m-5'>
-          <label htmlFor="Id">ID</label>
+          <label htmlFor="Id" className='dataStyle'>ID</label>
           <input className="inputdata m-5" type='text' {...register("clinicId", { required: true })} />
           <button className="buttons" onClick={handleSubmit(ViewPatient)}>View</button>
         </div>
 
         <div className="patientInfo">
           <div className='mx-5'>
-            <li> <label>Username</label>
+            <li> <label className='dataStyle'>Username</label>
               {response?.data.userName}</li>
-            <li> <label>Email</label>
+            <li> <label className='dataStyle'>Email</label>
               {response?.data.email}</li>
-            <li><label>Phone</label>
+            <li><label className='dataStyle'>Phone</label>
               {response?.data.phone}</li>
-            <li><label>Gender</label>
+            <li><label className='dataStyle'>Gender</label>
               {response?.data.gender}</li>
-            <li><label>Medical History</label>
+            <li><label className='dataStyle'>Medical History</label>
               {response?.data.medicalHistory}</li>
-            <li><label>Dental History</label>
+            <li><label className='dataStyle'>Dental History</label>
               {response?.data.dentalHistory}</li>
-            <li><label>Age</label>
+            <li><label className='dataStyle'>Age</label>
               {response?.data.age}</li>
           </div>
         </div>
@@ -104,4 +104,4 @@ function ViewPatient(props: any) {
   );
 }
 
-export default ViewPatient
+export default ViewPatient;

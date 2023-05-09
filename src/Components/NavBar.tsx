@@ -127,7 +127,7 @@ export default function NavBar() {
     let navBar = changeTitle();
 
     return (
-        <Navbar className=''>
+        <Navbar>
 
             <Navbar.Brand  className="mx-5" href="/"><img src={teeth} alt="" width="100" height="100" /></Navbar.Brand>
             <h2>{navBar?.title}</h2>
@@ -139,6 +139,7 @@ export default function NavBar() {
 
                 <button className='navButtons mx-3'>
                     <Nav.Link href={navBar?.link2.target}>{navBar?.link2.text}</Nav.Link>
+                    
                 </button>
             </Nav>
 

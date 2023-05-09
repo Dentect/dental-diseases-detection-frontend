@@ -18,7 +18,6 @@ function ViewXrays(props: any) {
     <div className="col ">
 
         {images}
-        {/* <img className="images" src={props.xrays[1].detectionURL} alt="" /> */}
 
     </div>
 

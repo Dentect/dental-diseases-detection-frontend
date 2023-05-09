@@ -1,25 +1,63 @@
+import axios from "axios";
+import { useForm } from "react-hook-form";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+
 export default function DisplayDection(props: any) {
 
-  // const [detectedImage, setDetectedImage] = useState('');
-  // const [detectedImageBlod, setDetectedImageBlob] = useState('');
+  console.log(props.xray);
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  // const handleChange = (e: any) => {
-  //   const blob = new Blob([test], { type: '*/*' });
-  //   const imageUrl = URL.createObjectURL(blob);
-  //   setDetectedImageBlob(imageUrl);
-  //   setDetectedImage(test);
-  // }
-  // https://firebasestorage.googleapis.com/v0/b/dental-diseases-detection.appspot.com/o/detections%2F238-2023-03-14%2003%3A10%3A15.858495.jpg?alt=media&token=95c22e18-985d-4491-94ec-e4cd727db30c/ 
+  const baseURL = `http://localhost:3000/patients/xrays/${props.xray?._id}`;
+
+  async function onSubmit(data: any) {
+
+    let config = {
+      headers: {
+        authorization: props.token,
+      }
+    }
+    try {
+      await axios.post(baseURL, data, config)
+        .then(res => {
+        })
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
 
   return (
-    <div className="upload my-5">
-      <img className="images my-5" src={props.image} alt="" />
-      <div className="pa">
+
+    <div className="row justify-content-center">
+      <div className=" upload my-5">
+        <img className="images my-5" src={props.xray?.detectionURL} alt="" />
+             <Popup trigger=
+                {<button className="buttons m-4"> Click to open popup </button>}
+                position="right center">
+                <div>GeeksforGeeks</div>
+            </Popup>
+
 
       </div>
-      <button className="buttons m-4">Print</button>
+
+      <div className="form-wrapper col-md-5 col-sm-9">
+
+        <label htmlFor="dentistComment" className='dataStyle'>Comments</label><br />
+        <input className="inputdata form-control" type='text' {...register("dentistComment", { required: true })} /><br />
+
+        <div className="data submit">
+          <button onClick={handleSubmit(onSubmit)} type="submit" className="buttons m-4">Save</button>
+        </div>
+
+      
+      </div>
     </div>
+
   );
 }
