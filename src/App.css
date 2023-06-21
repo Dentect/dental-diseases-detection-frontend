@@ -7,6 +7,8 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
+  margin: 0%;
+  overflow-x: hidden;
 }
 
 
@@ -64,9 +66,9 @@ input[type='radio'] {
 
 
 .navbar {
-  /* display: flex; */
   background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
+  transition: 0.4s; /* Adds a transition effect when the padding is decreased */
 }
 
 
@@ -145,8 +147,6 @@ li{
   padding: 40px;
   margin: 50px;
 }
-
-
 
 /* label {
   font-size: 30px;

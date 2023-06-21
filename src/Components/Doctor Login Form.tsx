@@ -42,7 +42,7 @@ function DoctorLogin(props:any) {
         <div className="row justify-content-center">
 
             <div className="col-md-5 my-auto col-sm-9">
-                <img className="w-100" src={registerImage}></img>
+                <img className="w-100" src={registerImage} alt=""></img>
             </div>
 
             <div className='form-wrapper col-md-5 col-sm-9'>
