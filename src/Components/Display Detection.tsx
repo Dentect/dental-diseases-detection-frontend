@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+// import 'reactjs-popup/dist/index.css';
 
 function DisplayDetection(props: any) {
 
   const baseURL = `http://localhost:3000/patients/xrays/${props.xray?._id}`;
+
   const {
     register,
     handleSubmit,
@@ -33,10 +34,19 @@ function DisplayDetection(props: any) {
 
       <div className=" upload my-5">
         <img className="images my-5" src={props.xray?.detectionURL} alt="" />
-             <Popup trigger=
+          
+        <Popup trigger=
                 {<button className="buttons m-4">Diseases Names</button>}
-                position="right center">
-                <div>Diseases</div>
+                modal
+                >           
+                <div >
+                  CP: Caries Proximal<br/>
+                  CO: Caries Occlusal<br/>
+                  PBLID: Periodontal Bone Loss Inter Dental<br/>
+                  PBLIR: Periodontal Bone Loss Inter Radicular<br/>
+                  PL: Periapical Lesion<br/>
+                  I: Impaction <br/>
+                </div>
             </Popup>
       </div>
 
