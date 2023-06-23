@@ -46,9 +46,9 @@ function DoctorRegister(props: any) {
 
                 <form>
                     <div className='data'>
-                        <label className='dataStyle'>First Name</label>
+                        <label className='dataStyle' htmlFor="firstName">First Name</label>
                         <input className="inputdata" type='text' {...register("firstName", { required: true})} />
-                        <label htmlFor="lastName">Last Name</label>
+                        <label className='dataStyle' htmlFor="lastName">Last Name</label>
                         <input className="inputdata" type='text' {...register("lastName", { required: true})} />
                     </div>
 
