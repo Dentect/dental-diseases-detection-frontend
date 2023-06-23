@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 function ViewPatient(props: any) {
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState<AxiosResponse | null | void>();
 
@@ -20,24 +20,21 @@ function ViewPatient(props: any) {
     props.setId(data.clinicId);
     const baseURL = `http://localhost:3000/dentists/patients/${data.clinicId}`;
 
-    let config = {
+    const config = {
       headers: {
         authorization: props.token,
-      }
-    }
+      },
+    };
 
     try {
-      await axios.get(baseURL, config)
-        .then(res => {
-          setResponse(res);
-          setLoading(false);
-        })
-    } catch (error) {
-      console.log(error);
+      const res = await axios.get(baseURL, config);
+      setResponse(res);
       setLoading(false);
-
-    }
-  }
+    } catch (err: any) {
+      setLoading(false);
+      alert(err.response.data.error);
+    };
+  };
 
   async function ViewOldXrays() {
     setLoading(true);
@@ -46,21 +43,19 @@ function ViewPatient(props: any) {
     let config = {
       headers: {
         authorization: props.token,
-      }
-    }
+      },
+    };
 
     try {
-      await axios.get(baseURL, config)
-        .then(res => {
-          props.setXrays(res.data);
-          setLoading(false);
-          navigate("/ViewOldXrays", { replace: true });
-        })
-    } catch (error) {
-      console.log(error);
+      const res = await axios.get(baseURL, config);
+      props.setXrays(res.data);
       setLoading(false);
-    }
-  }
+      navigate("/ViewOldXrays", { replace: true });
+    } catch (err: any) {
+      setLoading(false);
+      alert(err.response.data.error);
+    };
+  };
 
   return (
 
@@ -69,7 +64,7 @@ function ViewPatient(props: any) {
 
         <div className='m-5'>
           <label htmlFor="Id" className='dataStyle'>ID</label>
-          <input className="inputdata m-5" type='text' {...register("clinicId", { required: true })} />
+          <input className="inputData m-5" type='text' {...register("clinicId", { required: true })} />
           <button className="buttons" onClick={handleSubmit(ViewPatient)}>View</button>
         </div>
 
@@ -100,8 +95,7 @@ function ViewPatient(props: any) {
 
       {loading ? <h2 className="loading">Loading...</h2> : ""}
     </div>
-
   );
-}
+};
 
 export default ViewPatient;

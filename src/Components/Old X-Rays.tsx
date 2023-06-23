@@ -8,20 +8,15 @@ function ViewXrays(props: any) {
         <img className="images my-3" src={image.originalURL} alt="" />
         <h1>Detected X-ray</h1>
         <img className="images my-3" src={image.detectionURL} alt="" />
-
       </div>
     );
   });
+
   return (
-
-
     <div className="col ">
-
-        {images}
-
+      {images}
     </div>
-
   );
-}
+};
 
 export default ViewXrays;

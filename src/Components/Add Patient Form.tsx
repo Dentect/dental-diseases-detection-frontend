@@ -1,13 +1,12 @@
-import registerImage from '../assets/Register patient data.png';
 import { useForm } from 'react-hook-form';
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
-
-
+import registerImage from '../assets/Register patient data.png';
 
 function PatientRegister(props: any) {
 
+    const baseURL = "http://localhost:3000/dentists/patients";
     let navigate = useNavigate();
     const {
         register,
@@ -15,27 +14,21 @@ function PatientRegister(props: any) {
         formState: { errors },
     } = useForm();
 
-
-    const baseURL = "http://localhost:3000/dentists/patients";
-
     async function onSubmit(data: any) {
 
-        console.log(data)
-        let config = {
+        const config = {
             headers: {
                 authorization: props.token,
-            }
-        }
-        try {
-            await axios.post(baseURL, data, config)
-                .then(res => {
-                    navigate("/ImageUpload", { replace: true })
-                })
-        } catch (error) {
-            console.log(error)
-        }
+            },
+        };
 
-    }
+        try {
+            await axios.post(baseURL, data, config);
+            navigate("/ImageUpload", { replace: true });
+        } catch (err: any) {
+            alert(err.response.data.error);
+        };
+    };
 
     return (
         <div className="row justify-content-center">
@@ -49,54 +42,53 @@ function PatientRegister(props: any) {
                 <form>
                     <div className='data'>
                         <label htmlFor="firstName" className='dataStyle'>First Name</label>
-                        <input className="inputdata" type='text'  {...register("firstName", { required: true })} />
+                        <input className="inputData" type='text'  {...register("firstName", { required: true })} />
                         <label htmlFor="middleName" className='dataStyle'>Middle Name</label>
-                        <input className="inputdata" type='text'  {...register("middleName", { required: true })} />
+                        <input className="inputData" type='text'  {...register("middleName", { required: true })} />
                         <label htmlFor="lastName" className='dataStyle'>Last Name</label>
-                        <input className="inputdata" type='text'  {...register("lastName", { required: true })} />
+                        <input className="inputData" type='text'  {...register("lastName", { required: true })} />
                     </div>
 
                     <div className='data'>
                         <label htmlFor="email" className='dataStyle'>Email</label>
-                        <input className="inputdata" type='email' {...register("email", { pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/ })} />
+                        <input className="inputData" type='email' {...register("email", { pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/ })} />
                     </div>
 
                     <div className='data'>
                         <label htmlFor="medicalHistory" className='dataStyle'>Medical History</label>
-                        <input className="inputdata" type='text' {...register("medicalHistory")} />
+                        <input className="inputData" type='text' {...register("medicalHistory")} />
                     </div>
 
                     <div className='data'>
                         <label htmlFor="gender" className='dataStyle'>Gender</label>
-                        <p className='gender'>                       
+                        <p className='gender'>
                             <input type='radio' value="Female"  {...register("gender", { required: true })} />
-                        Female
+                            Female
                         </p>
                         <p className='gender'>
-                        <input type='radio' value="Male" {...register("gender", { required: true })} />
-                        Male
+                            <input type='radio' value="Male" {...register("gender", { required: true })} />
+                            Male
                         </p>
                     </div>
 
                     <div className='data'>
                         <label htmlFor="phone" className='dataStyle'>Phone</label>
-                        <input className="inputdata" type='text' {...register("phone", { required: true })} />
+                        <input className="inputData" type='text' {...register("phone", { required: true })} />
                     </div>
 
                     <div className='data'>
                         <label htmlFor="clinicId" className='dataStyle'>ID</label>
-                        <input className="inputdata" type='text' {...register("clinicId", { required: true })} />
+                        <input className="inputData" type='text' {...register("clinicId", { required: true })} />
                     </div>
-
 
                     <div className='data'>
                         <label htmlFor="birthDate" className='dataStyle'>Birth Date</label>
-                        <input className="inputdata" type='date' {...register("birthDate", { required: true })} />
+                        <input className="inputData" type='date' {...register("birthDate", { required: true })} />
                     </div>
 
                     <div className='data'>
                         <label htmlFor="dentalHistory" className='dataStyle'>Dental History</label>
-                        <input className="inputdata" type='text' {...register("dentalHistory")} />
+                        <input className="inputData" type='text' {...register("dentalHistory")} />
                     </div>
 
                     <div className='data submit'>
@@ -108,6 +100,6 @@ function PatientRegister(props: any) {
             </div>
         </div>
     );
-}
+};
 
 export default PatientRegister;

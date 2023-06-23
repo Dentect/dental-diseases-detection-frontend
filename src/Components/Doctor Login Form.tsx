@@ -1,42 +1,36 @@
 import { useState } from "react";
-import registerImage from '../assets/Login.png';
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
+import registerImage from '../assets/Login.png';
 
-
-function DoctorLogin(props:any) {
+function DoctorLogin(props: any) {
 
     const baseURL = "http://localhost:3000/auth/signIn";
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // const [token, setToken] = useState("");
-    const navigate = useNavigate();
-    const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
     async function onSubmit(data: any) {
+
         data.preventDefault();
-
-        setError('');
         setLoading(true);
-        
-        axios.post(baseURL, {email, password}).then(response => {
-            setLoading(false);
-            const t = response.headers['auth-token']
-            props.onLogin(t)
-            // if (response.status === 401) setError(response.data.message);
-            // else setError("Something went wrong. Please try again later.");
-            navigate("/MainFunctions", { replace: true })    
 
-        }).catch(error => {
+        try {
+            const res = await axios.post(baseURL, { email, password });
             setLoading(false);
-            console.log(error);
-        });
+            const token = res.headers["auth-token"];
+            props.onLogin(token);
+            navigate("/MainFunctions", { replace: true });
+        } catch (err: any) {
+            setLoading(false);
+            alert(err.response.data.error);
+        };
+
         setPassword("");
         setEmail("");
     };
-
 
     return (
         <div className="row justify-content-center">
@@ -52,21 +46,21 @@ function DoctorLogin(props:any) {
 
                     <div className='data'>
                         <label htmlFor="email" className='dataStyle'>Email</label>
-                        <input className="inputdata" 
-                        type='email' 
-                        onChange={(e) => setEmail(e.target.value)}
-                        value={email} 
-                        autoComplete="off"
-                        required/>
+                        <input className="inputData"
+                            type='email'
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                            autoComplete="off"
+                            required />
                     </div>
 
                     <div className='data'>
                         <label htmlFor="password" className='dataStyle'>Password</label>
-                        <input className="inputdata" 
-                        type='password' 
-                        onChange={(e) => setPassword(e.target.value)}
-                        value={password} 
-                        required/>
+                        <input className="inputData"
+                            type='password'
+                            onChange={(e) => setPassword(e.target.value)}
+                            value={password}
+                            required />
                     </div>
 
                     <div className='data submit'>
@@ -82,5 +76,6 @@ function DoctorLogin(props:any) {
 
         </div>
     );
-}
+};
+
 export default DoctorLogin;

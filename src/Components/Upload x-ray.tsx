@@ -18,36 +18,35 @@ function ImageUpload(props: any) {
   const handleChange = (e: any) => {
     const blob = new Blob([e.target.files[0]], { type: '*/*' });
     const imageUrl = URL.createObjectURL(blob);
-    setUploadedImages(imageUrl)
-    setImages(e.target.files[0])
-  }
+    setUploadedImages(imageUrl);
+    setImages(e.target.files[0]);
+  };
 
-  const handleApi = (data: any) => {
+  async function handleApi(data: any) {
     setLoading(true);
 
-    const url = `http://localhost:3000/patients/${data.clinicId}/xrays`;
-
-    let config = {
+    const baseURL = `http://localhost:3000/patients/${data.clinicId}/xrays`;
+    const config = {
       headers: {
         authorization: props.token,
-      }
-    }
+      },
+    };
 
     const formData = new FormData();
     formData.append('xray', image);
-    formData.append('xrayDate',data.xrayDate);
+    formData.append('xrayDate', data.xrayDate);
 
-    axios.post(url, formData, config).then((res) => {
+    try {
+      const res = await axios.post(baseURL, formData, config);
       setLoading(false);
       const xRay = res.data.xray;
       props.setDetectedImage(xRay);
-      navigate("/DisplayDection", { replace: true });
-      
-    }).catch((err) => {
+      navigate("/DisplayDetection", { replace: true });
+    } catch (err: any) {
       setLoading(false);
-      console.log(err);
-    })
-  }
+      alert(err.response.data.error);
+    };
+  };
 
   return (
 
@@ -56,17 +55,16 @@ function ImageUpload(props: any) {
 
         <div className='m-5'>
           <label htmlFor="Id" className='dataStyle'>ID</label>
-          <input className="inputdata m-5" type='text' {...register("clinicId", { required: true })} />
+          <input className="inputData m-5" type='text' {...register("clinicId", { required: true })} />
           <label htmlFor="date" className='dataStyle'>X-Ray Date</label>
-          <input className="inputdata m-5" type='date' {...register("xrayDate", { required: true })} />
+          <input className="inputData m-5" type='date' {...register("xrayDate", { required: true })} />
         </div>
 
         <div>
           <div>
-            <img className="images" src={uploadedImage} alt=""/>
+            <img className="images" src={uploadedImage} alt="" />
           </div>
         </div>
-
 
         <label className="buttons m-4 p-4">
           <input type="file" onChange={handleChange} />
@@ -75,15 +73,12 @@ function ImageUpload(props: any) {
 
         <button className="buttons m-4" onClick={handleSubmit(handleApi)}>Detect</button>
 
-
       </div>
-      
+
       {loading ? <h2 className="loading">Loading...</h2> : ""}
 
     </div>
-
   );
-
-}
+};
 
 export default ImageUpload;

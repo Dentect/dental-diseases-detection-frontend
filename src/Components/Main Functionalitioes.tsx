@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-
 function MainFunctionalities(props: any) {
 
   return (
@@ -24,10 +23,9 @@ function MainFunctionalities(props: any) {
           <button className="buttons m-5">Feedback</button>
         </Link>
 
-
       </div>
     </div>
   );
-}
+};
 
-export default MainFunctionalities
+export default MainFunctionalities;
