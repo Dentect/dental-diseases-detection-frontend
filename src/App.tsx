@@ -62,7 +62,7 @@ function App() {
           <Route path="/PatientRegister" element={<PatientRegister token={token} />} />
           <Route path="/ViewPatient" element={<ViewPatient setId={patientId} token={token} setXrays={oldXrays} />} />
           <Route path="/AboutUs" element={<AboutUs />} />
-          <Route path="/Feedback" element={<Feedback />} />
+          <Route path="/Feedback" element={<Feedback token={token} />} />
           <Route path="/MailVerification" element={<OTP email={email} />} />
           <Route path="/ViewOldXrays" element={<ViewXrays xrays={xrays} />} />
 
