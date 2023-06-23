@@ -38,7 +38,7 @@ function App() {
     setUploadedImages(newImage);
   };
 
-  const handleRegister = (newEmail: any) => {
+  const handleVerification = (newEmail: any) => {
     setEmail(newEmail);
   };
 
@@ -53,9 +53,9 @@ function App() {
 
         <Routes>
 
-          <Route path="/Register" element={<DoctorRegister setEmail={handleRegister} />} />
+          <Route path="/Register" element={<DoctorRegister setEmail={handleVerification} />} />
           <Route path='' element={<Home />} />
-          <Route path="/Login" element={<DoctorLogin onLogin={handleLogin} />} />
+          <Route path="/Login" element={<DoctorLogin onLogin={handleLogin} setEmail={handleVerification} />} />
           <Route path="/MainFunctions" element={<MainFunctionalities token={token} />} />
           <Route path="/ImageUpload" element={<ImageUpload setDetectedImage={detectedImage} id={clinicId} token={token} />} />
           <Route path="/DisplayDetection" element={<DisplayDetection xray={uploadedImage} id={clinicId} token={token} />} />

@@ -26,10 +26,12 @@ function DoctorLogin(props: any) {
         } catch (err: any) {
             setLoading(false);
             alert(err.response.data.error);
+            if (err.response.data.error === 'Unverified account!') {
+                console.log(err.response.data.error === 'Unverified account!')
+                props.setEmail(email);
+                navigate("/MailVerification", { replace: true });
+            }
         };
-
-        setPassword("");
-        setEmail("");
     };
 
     return (
