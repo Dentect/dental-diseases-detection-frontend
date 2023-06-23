@@ -78,7 +78,7 @@ function PatientRegister(props: any) {
 
                     <div className='data'>
                         <label htmlFor="clinicId" className='dataStyle'>ID</label>
-                        <input className="inputData" type='text' {...register("clinicId", { required: true })} />
+                        <input className="inputData" type='text' {...register("clinicId", { required: true, valueAsNumber: true })} />
                     </div>
 
                     <div className='data'>

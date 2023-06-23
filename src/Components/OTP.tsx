@@ -4,17 +4,33 @@ import { useNavigate } from "react-router-dom";
 
 function OTP(props: any) {
 
-    const baseURL = 'http://localhost:3000/auth/verifyAccount';
     const [OTP, SetOTP] = useState("");
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
     async function onSubmit(data: any) {
+        setLoading(true);
+
+        const baseURL = 'http://localhost:3000/auth/verifyAccount';
+
         try {
             await axios.post(baseURL, { email: props.email, OTP });
             setLoading(false);
             navigate("/MainFunctions", { replace: true })
+        } catch (err: any) {
+            setLoading(false);
+            alert(err.response.data.error);
+        };
+    };
+    async function resend(data: any) {
+        setLoading(true);
+
+        const baseURL = 'http://localhost:3000/auth/newOTP';
+
+        try {
+            await axios.post(baseURL, { email: props.email });
+            setLoading(false);
         } catch (err: any) {
             setLoading(false);
             alert(err.response.data.error);
@@ -37,7 +53,7 @@ function OTP(props: any) {
                 </div>
 
                 <div className='data submit'>
-                    <button className="buttons m-4">Resend code</button>
+                    <button className="buttons m-4" onClick={resend}>Resend code</button>
                     <button className="buttons m-4" onClick={onSubmit}>Submit</button>
                 </div>
 

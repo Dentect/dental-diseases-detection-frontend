@@ -3,10 +3,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import registerImage from '../assets/Register.png';
+import { useState } from 'react';
 
 function DoctorRegister(props: any) {
 
     const baseURL = "http://localhost:3000/auth/signUp";
+    const [loading, setLoading] = useState(false);
+
     const navigate = useNavigate();
     const {
         register,
@@ -15,12 +18,15 @@ function DoctorRegister(props: any) {
     } = useForm();
 
     async function onSubmit(data: any) {
+        setLoading(true);
 
         try {
-            await axios.post(baseURL, data);
+            const res = await axios.post(baseURL, data);
+            setLoading(false);
             props.setEmail(data.email);
             navigate("/MailVerification", { replace: true })
         } catch (err: any) {
+            setLoading(false);
             alert(err.response.data.error);
         };
     };
@@ -81,6 +87,9 @@ function DoctorRegister(props: any) {
                     </div>
                 </form>
             </div>
+            
+            {loading ? <h2 className="loading">Loading...</h2> : ""}
+
         </div>
     );
 };
