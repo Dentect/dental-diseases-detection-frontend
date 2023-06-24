@@ -28,7 +28,7 @@ function ImageUpload(props: any) {
     const baseURL = `http://localhost:3000/patients/${data.clinicId}/xrays`;
     const config = {
       headers: {
-        authorization: props.token,
+        authorization: sessionStorage.getItem('token')? `${sessionStorage.getItem('token')}` : '',
       },
     };
 

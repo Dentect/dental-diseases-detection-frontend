@@ -22,7 +22,7 @@ function Feedback(props: any) {
 
         const config = {
             headers: {
-                authorization: props.token,
+                authorization: sessionStorage.getItem('token')? `Bearer ${sessionStorage.getItem('token')}` : '',
             },
         };
 

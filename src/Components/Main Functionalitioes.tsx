@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function MainFunctionalities(props: any) {
+function MainFunctionalities() {
 
   return (
 

@@ -20,8 +20,9 @@ function DoctorLogin(props: any) {
         try {
             const res = await axios.post(baseURL, { email, password });
             setLoading(false);
-            const token = res.headers["auth-token"];
-            props.onLogin(token);
+
+            sessionStorage.setItem('token', res.headers["auth-token"]);
+            
             navigate("/MainFunctions", { replace: true });
         } catch (err: any) {
             setLoading(false);

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 
 export default function Home(props: any) {
+    sessionStorage.removeItem('token');
+
     return (
         <div className="Home">
             <div className="homeBox">

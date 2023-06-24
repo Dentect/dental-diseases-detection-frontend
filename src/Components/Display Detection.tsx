@@ -5,6 +5,7 @@ import Popup from 'reactjs-popup';
 
 function DisplayDetection(props: any) {
 
+
   const baseURL = `http://localhost:3000/patients/xrays/${props.xray?._id}`;
 
   const {
@@ -17,7 +18,7 @@ function DisplayDetection(props: any) {
 
     const config = {
       headers: {
-        authorization: props.token,
+        authorization: sessionStorage.getItem('token')? `${sessionStorage.getItem('token')}` : '',
       },
     };
 

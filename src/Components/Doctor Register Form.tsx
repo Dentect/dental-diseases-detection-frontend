@@ -21,7 +21,7 @@ function DoctorRegister(props: any) {
         setLoading(true);
 
         try {
-            const res = await axios.post(baseURL, data);
+            await axios.post(baseURL, data);
             setLoading(false);
             props.setEmail(data.email);
             navigate("/MailVerification", { replace: true });

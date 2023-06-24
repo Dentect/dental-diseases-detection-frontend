@@ -55,6 +55,7 @@ export default function NavBar() {
         },
     };
 
+
     const changeTitle = () => {
         switch (window.location.pathname) {
             case '/Register':

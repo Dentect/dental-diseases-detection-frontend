@@ -20,15 +20,11 @@ import ViewXrays from './Components/Old X-Rays';
 
 function App() {
 
-  const [token, setToken] = useState(null);
   const [clinicId, setClinicId] = useState(null);
   const [uploadedImage, setUploadedImages] = useState(null);
   const [email, setEmail] = useState(null);
   const [xrays, setXrays] = useState(null);
 
-  const handleLogin = (newToken: any) => {
-    setToken(newToken);
-  };
 
   const patientId = (newId: any) => {
     setClinicId(newId);
@@ -46,6 +42,7 @@ function App() {
     setXrays(newXrays);
   };
 
+
   return (
     <>
       <BrowserRouter>
@@ -55,14 +52,14 @@ function App() {
 
           <Route path="/Register" element={<DoctorRegister setEmail={handleVerification} />} />
           <Route path='' element={<Home />} />
-          <Route path="/Login" element={<DoctorLogin onLogin={handleLogin} setEmail={handleVerification} />} />
-          <Route path="/MainFunctions" element={<MainFunctionalities token={token} />} />
-          <Route path="/ImageUpload" element={<ImageUpload setDetectedImage={detectedImage} id={clinicId} token={token} />} />
-          <Route path="/DisplayDetection" element={<DisplayDetection xray={uploadedImage} id={clinicId} token={token} />} />
-          <Route path="/PatientRegister" element={<PatientRegister token={token} />} />
-          <Route path="/ViewPatient" element={<ViewPatient setId={patientId} token={token} setXrays={oldXrays} />} />
+          <Route path="/Login" element={<DoctorLogin setEmail={handleVerification} />} />
+          <Route path="/MainFunctions" element={<MainFunctionalities />} />
+          <Route path="/ImageUpload" element={<ImageUpload setDetectedImage={detectedImage} id={clinicId} />} />
+          <Route path="/DisplayDetection" element={<DisplayDetection xray={uploadedImage} id={clinicId} />} />
+          <Route path="/PatientRegister" element={<PatientRegister />} />
+          <Route path="/ViewPatient" element={<ViewPatient setId={patientId} setXrays={oldXrays} />} />
           <Route path="/AboutUs" element={<AboutUs />} />
-          <Route path="/Feedback" element={<Feedback token={token} />} />
+          <Route path="/Feedback" element={<Feedback />} />
           <Route path="/MailVerification" element={<OTP email={email} />} />
           <Route path="/ViewOldXrays" element={<ViewXrays xrays={xrays} />} />
 

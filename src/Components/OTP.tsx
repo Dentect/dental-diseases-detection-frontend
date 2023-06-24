@@ -15,8 +15,11 @@ function OTP(props: any) {
         const baseURL = 'http://localhost:3000/auth/verifyAccount';
 
         try {
-            await axios.post(baseURL, { email: props.email, OTP });
+            const res = await axios.post(baseURL, { email: props.email, OTP });
             setLoading(false);
+            
+            sessionStorage.setItem('token', res.headers["auth-token"]);
+
             navigate("/MainFunctions", { replace: true })
         } catch (err: any) {
             setLoading(false);

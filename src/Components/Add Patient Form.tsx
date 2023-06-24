@@ -6,6 +6,8 @@ import registerImage from '../assets/Register patient data.png';
 
 function PatientRegister(props: any) {
 
+    console.log(sessionStorage.getItem('token'))
+
     const baseURL = "http://localhost:3000/dentists/patients";
     let navigate = useNavigate();
     const {
@@ -18,7 +20,7 @@ function PatientRegister(props: any) {
 
         const config = {
             headers: {
-                authorization: props.token,
+                authorization: sessionStorage.getItem('token')? `${sessionStorage.getItem('token')}` : '',
             },
         };
 

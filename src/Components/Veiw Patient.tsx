@@ -4,6 +4,9 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 
 function ViewPatient(props: any) {
+  
+  console.log(sessionStorage.getItem('token'))
+
 
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -15,6 +18,7 @@ function ViewPatient(props: any) {
   } = useForm();
 
   async function ViewPatient(data: any) {
+
     setLoading(true);
 
     props.setId(data.clinicId);
@@ -22,7 +26,7 @@ function ViewPatient(props: any) {
 
     const config = {
       headers: {
-        authorization: props.token,
+        authorization: sessionStorage.getItem('token')? `${sessionStorage.getItem('token')}` : '',
       },
     };
 
@@ -37,12 +41,14 @@ function ViewPatient(props: any) {
   };
 
   async function ViewOldXrays() {
+
+    console.log(sessionStorage.getItem('token'))
     setLoading(true);
 
     const baseURL = `http://localhost:3000/patients/${response?.data.clinicId}/xrays`;
     let config = {
       headers: {
-        authorization: props.token,
+        authorization: sessionStorage.getItem('token')? `${sessionStorage.getItem('token')}` : '',
       },
     };
 
