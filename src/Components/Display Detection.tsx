@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import Popup from 'reactjs-popup';
-// import 'reactjs-popup/dist/index.css';
 
 function DisplayDetection(props: any) {
 
@@ -38,7 +37,6 @@ function DisplayDetection(props: any) {
           
         <Popup trigger=
                 {<button className="buttons m-4">Diseases Names</button>}
-                modal
                 >           
                 <div >
                   CP: Caries Proximal<br/>
