@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
-import registerImage from '../assets/Register patient data.png';
 import { useForm } from 'react-hook-form';
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
-
-
+import registerImage from '../assets/Register patient data.png';
 
 function PatientRegister(props: any) {
 
+    console.log(sessionStorage.getItem('token'))
 
+    const baseURL = "http://localhost:3000/dentists/patients";
     let navigate = useNavigate();
     const {
         register,
@@ -17,93 +16,92 @@ function PatientRegister(props: any) {
         formState: { errors },
     } = useForm();
 
-
-    const baseURL = "http://localhost:3000/dentists/patients";
-
     async function onSubmit(data: any) {
-        let config = {
-            headers: {
-             authorization: "value",
-            }
-          }
-        try {
-            await axios.post(baseURL, data, config)
-            .then(res => {
-                console.log(res);
-            })
-            console.log('hi')
-        } catch (error) {
-            console.log(error)
-        }
 
-        navigate("/Login")        
-    }
+        const config = {
+            headers: {
+                authorization: sessionStorage.getItem('token')? `${sessionStorage.getItem('token')}` : '',
+            },
+        };
+
+        try {
+            await axios.post(baseURL, data, config);
+            navigate("/ImageUpload", { replace: true });
+        } catch (err: any) {
+            alert(err.response.data.error);
+        };
+    };
 
     return (
         <div className="row justify-content-center">
             <div className="col-md-5 my-auto col-sm-9">
-                <img className="w-100" src={registerImage}></img>
+                <img className="w-100" src={registerImage} alt=''></img>
             </div>
 
             <div className='form-wrapper col-md-5 col-sm-9'>
                 <h2>Patient data</h2>
 
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form>
                     <div className='data'>
-                        <label htmlFor="firstName">First Name</label>
-                        <input className="inputdata" type='text' name='firstName' />
-                        <label htmlFor="middleName">Middle Name</label>
-                        <input className="inputdata" type='text' name='middleName' />
-                        <label htmlFor="lastName">Last Name</label>
-                        <input className="inputdata" type='text' name='lastName' />
+                        <label htmlFor="firstName" className='dataStyle'>First Name</label>
+                        <input className="inputData" type='text'  {...register("firstName", { required: true })} />
+                        <label htmlFor="middleName" className='dataStyle'>Middle Name</label>
+                        <input className="inputData" type='text'  {...register("middleName", { required: true })} />
+                        <label htmlFor="lastName" className='dataStyle'>Last Name</label>
+                        <input className="inputData" type='text'  {...register("lastName", { required: true })} />
                     </div>
 
                     <div className='data'>
-                        <label htmlFor="email">Email</label>
-                        <input className="inputdata" type='email' /*name='email'*/ {...register("email", { required: true, pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/ })} />
+                        <label htmlFor="email" className='dataStyle'>Email</label>
+                        <input className="inputData" type='email' {...register("email", { pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/ })} />
                     </div>
 
                     <div className='data'>
-                        <label htmlFor="medicalHistory">Medical History</label>
-                        <input className="inputdata" type='text' />
+                        <label htmlFor="medicalHistory" className='dataStyle'>Medical History</label>
+                        <input className="inputData" type='text' {...register("medicalHistory")} />
                     </div>
 
                     <div className='data'>
-                        <label htmlFor="gender">Gender</label>
-                        <input className="inputdata" type='text' />
+                        <label htmlFor="gender" className='dataStyle'>Gender</label>
+                        <p className='gender'>
+                            <input type='radio' value="Female"  {...register("gender", { required: true })} />
+                            Female
+                        </p>
+                        <p className='gender'>
+                            <input type='radio' value="Male" {...register("gender", { required: true })} />
+                            Male
+                        </p>
                     </div>
 
                     <div className='data'>
-                        <label htmlFor="phone">Phone</label>
-                        <input className="inputdata" type='text' />
+                        <label htmlFor="phone" className='dataStyle'>Phone</label>
+                        <input className="inputData" type='text' {...register("phone", { required: true })} />
                     </div>
 
                     <div className='data'>
-                        <label htmlFor="phone">ID</label>
-                        <input className="inputdata" type='text' />
-                    </div>
-
-
-                    <div className='data'>
-                        <label htmlFor="birthDate">Birth Date</label>
-                        <input className="inputdata" type='text' />
+                        <label htmlFor="clinicId" className='dataStyle'>ID</label>
+                        <input className="inputData" type='text' {...register("clinicId", { required: true, valueAsNumber: true })} />
                     </div>
 
                     <div className='data'>
-                        <label htmlFor="dentalHistory">Dental History</label>
-                        <input className="inputdata" type='text' />
+                        <label htmlFor="birthDate" className='dataStyle'>Birth Date</label>
+                        <input className="inputData" type='date' {...register("birthDate", { required: true })} />
+                    </div>
+
+                    <div className='data'>
+                        <label htmlFor="dentalHistory" className='dataStyle'>Dental History</label>
+                        <input className="inputData" type='text' {...register("dentalHistory")} />
                     </div>
 
                     <div className='data submit'>
-                        <Link to={'/ImageUpload'}>
+                        <Link onClick={handleSubmit(onSubmit)} to={'/ImageUpload'}>
                             <button type="submit" className="buttons">Register Patient</button>
                         </Link>
                     </div>
                 </form>
             </div>
-
         </div>
     );
-}
+};
 
 export default PatientRegister;

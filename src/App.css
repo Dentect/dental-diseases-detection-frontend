@@ -1,14 +1,19 @@
 body {
+  font-family: 'Akshar', sans-serif;
   background-color: #088CAA;
   background-image: url('./assets/image\ 15.png');
+  /* background-repeat: no-repeat; */
   background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0%;
   overflow-x: hidden;
 }
 
 
 h2 {
-  width: 583px;
-  font-family: 'Akshar';
+  /* width: 583px; */
   font-style: normal;
   font-weight: 400;
   font-size: 60px;
@@ -18,7 +23,6 @@ h2 {
 
 h1 {
   width: 583px;
-  font-family: 'Akshar';
   font-style: normal;
   font-weight: 400;
   font-size: 92px;
@@ -29,6 +33,9 @@ h1 {
 
 .Home {
   background-image: url('./assets/Home.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
   position: absolute;
   width: 100%;
   height: 100%;
@@ -37,99 +44,94 @@ h1 {
 .homeBox {
   background: rgba(255, 255, 255, 0.5);
   border-radius: 54px;
-  position: absolute;
+  margin: auto;
+  margin-top: 10%;
   width: 50%;
   height: 70%;
-  left: 494px;
-  top: 197px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#files {
+
+
+input[type="file"] {
   display: none;
-  visibility: hidden;
-  border: none;
-  outline: none;
+}
+input[type='radio'] { 
+  transform: scale(2); 
+  margin: 10px;
 }
 
+
 .navbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
+  transition: 0.4s; /* Adds a transition effect when the padding is decreased */
 }
 
 
 .upload {
   background: rgba(255, 255, 255, 0.5);
   border-radius: 54px;
-  position: absolute;
-  width: 50%;
-  height: 70%;
-  left: 494px;
-  top: 197px;
-  display: flex;
-  justify-content: center;
-  align-items: end;
+  margin: auto;
+  width: 70%;
+  height: 90%;
+  text-align: center;
 }
 
+
 .buttons {
-  position: relative;
   background: #088CAA;
   border-radius: 18px;
   border-color: transparent;
-  margin: 10%;
   color: white;
-  font-family: 'Akshar';
   font-weight: bold;
   font-size: 30px;
-  padding: 5px;
-  align-items:center;
   width: 322px;
+  height: 95px;
+}
+
+.navButtons {
+  background: #088CAA;
+  border-radius: 18px;
+  border-color: transparent;
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+  align-items:center;
+  width: 200px;
   height: 104px;
 }
 
-.btn {
-  width: 322px;
-  height: 104px;
-  position: absolute;
-  left: -10px;
-  top: 0px;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-family: 'Akshar';
-  font-weight: bold;
-  font-size: 30px;
-  padding: 10% 0;
-  border: none;
-  outline: none;
-
+.nav-link{
+  color: white !important;
 }
 
 .images {
-  position: absolute;
-  left: calc(50% - 750px/2 - 0.2px);
-  top: calc(50% - 600px/2 - 0.01px);
-  height: 75%;
-  width: 75%;
+  /* left: calc(50% - 750px/2 - 0.2px);
+  top: calc(50% - 600px/2 - 0.01px); */
+  height: 100%;
+  width: 93%;
+}
 
+li{
+  list-style-type:none;
+  align-items: start;
+  font-size: xx-large;
+  font-style: oblique;
 }
 
 .patientInfo{
-  position: absolute;
-  width: 577px;
-  height: 329px;
-  left: calc(50% - 577px/2 - 0.5px);
-  top: calc(50% - 329px/2 - 64.5px);
+  margin: auto;
+  width: 50%;
+  height: 60%;
   background: rgba(217, 217, 217, 0.6);
   border-radius: 14px;
+  text-align: start;
+    
 }
-
 
 
 /* Register from */
@@ -146,16 +148,23 @@ h1 {
   margin: 50px;
 }
 
-
-
-label {
-  margin-bottom: 0.5em;
-  color: #444;
+.dataStyle{
+  font-size: 30px;
+  color: #088CAA;
   font-weight: bold;
+  margin-right: 20px;
 }
 
-.inputdata {
+.gender{
+  font-size: x-large;
+  border-radius: 5px;
+  border-color: transparent;
+  border-radius: 14px;
+}
+
+.inputData {
   padding: 10px 10px;
+  font-size: x-large;
   border-radius: 5px;
   background: rgba(217, 217, 217, 0.6);
   border-color: transparent;
@@ -164,9 +173,15 @@ label {
 
 
 
-button:hover {
+.buttons:hover {
   background-color: #088caabc;
   color: #fefefe;
+}
+
+.navButtons:hover{
+  background-color: #088caabc;
+  color: #fefefe;
+ 
 }
 
 .data {
@@ -182,12 +197,58 @@ button:hover {
 
 .loading{
   position: absolute;
-  width: 100vw;
-  height: 100vh;
+  width:100%;
+  height: 100%;
+  top: 0;
   left: 0;
-  top: -20px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.9);
+
+}
+
+
+
+/* stars */
+
+.stars {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 100px;
+}
+.on {
+  color: #f9e001;
+}
+.off {
+  color: #ccc;
+}
+
+.newUpload{
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 54px;
+  width: 50%;
+  height: 70%;
+  left: 494px;
+  top: 197px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.popup-content {
+  background: rgba(255, 255, 255, 0.923);
+  border-radius: 14px;
+  padding: 10px;
+  font-size: xx-large;
+  width: 30%;
+}
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+[data-popup='tooltip'].popup-overlay {
+  background: transparent;
 }

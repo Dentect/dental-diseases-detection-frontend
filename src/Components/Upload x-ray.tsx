@@ -1,51 +1,84 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import DisplayDection from "./Display Detection";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
-function ImageUpload() {
+function ImageUpload(props: any) {
+
   const [image, setImages] = useState('');
   const [uploadedImage, setUploadedImages] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
+  const {
+    register,
+    handleSubmit
+  } = useForm();
 
   const handleChange = (e: any) => {
     const blob = new Blob([e.target.files[0]], { type: '*/*' });
     const imageUrl = URL.createObjectURL(blob);
-    setUploadedImages(imageUrl)
-    setImages(e.target.files[0])
-  }
+    setUploadedImages(imageUrl);
+    setImages(e.target.files[0]);
+  };
 
-  const handleApi = () => {
-    const url = 'http://localhost:3000/patients/6408c454cd28f77798fbfd76/xrays';
+  async function handleApi(data: any) {
+    setLoading(true);
+
+    const baseURL = `http://localhost:3000/patients/${data.clinicId}/xrays`;
+    const config = {
+      headers: {
+        authorization: sessionStorage.getItem('token')? `${sessionStorage.getItem('token')}` : '',
+      },
+    };
+
     const formData = new FormData();
     formData.append('xray', image);
-    formData.append('xrayDate', '2023-10-6');
+    formData.append('xrayDate', data.xrayDate);
 
-    const response = axios.post(url, formData).then((res) => {
-          console.log(res.data.xray.detection)
-          const newURL = res.data.xray.detection;
-          setUploadedImages(newURL);
-    }).catch((err) => {
-      console.log(err)
-    })
-
-
-  }
+    try {
+      const res = await axios.post(baseURL, formData, config);
+      setLoading(false);
+      const xRay = res.data.xray;
+      props.setDetectedImage(xRay);
+      navigate("/DisplayDetection", { replace: true });
+    } catch (err: any) {
+      setLoading(false);
+      alert(err.response.data.error);
+    };
+  };
 
   return (
 
-    <div className="upload">
+    <div>
+      <div className="upload">
 
-      <img className="images" src={uploadedImage}/>
-      <button className=" buttons position-absolute bottom-0 start-0 my-4" >Upload X-ray
-        <label htmlFor="files" className="btn"></label>
-        <input id="files" type="file" onChange={handleChange}/>
-      </button>
-      {/* <Link to={'/DisplayDection'}> */}
-        <button className="buttons position-absolute bottom-0 end-0 my-4" onClick={handleApi}>Detect</button>
-      {/* </Link> */}
+        <div className='m-5'>
+          <label htmlFor="Id" className='dataStyle'>ID</label>
+          <input className="inputData m-5" type='text' {...register("clinicId", { required: true })} />
+          <label htmlFor="date" className='dataStyle'>X-Ray Date</label>
+          <input className="inputData m-5" type='date' {...register("xrayDate", { required: true })} />
+        </div>
+
+        <div>
+          <div>
+            <img className="images" src={uploadedImage} alt="" />
+          </div>
+        </div>
+
+        <label className="buttons m-4 p-4">
+          <input type="file" onChange={handleChange} />
+          Upload X-ray
+        </label>
+
+        <button className="buttons m-4" onClick={handleSubmit(handleApi)}>Detect</button>
+
+      </div>
+
+      {loading ? <h2 className="loading">Loading...</h2> : ""}
+
     </div>
   );
-}
+};
 
 export default ImageUpload;
