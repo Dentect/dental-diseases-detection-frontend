@@ -110,10 +110,10 @@ input[type='radio'] {
 }
 
 .images {
-  left: calc(50% - 750px/2 - 0.2px);
-  top: calc(50% - 600px/2 - 0.01px);
+  /* left: calc(50% - 750px/2 - 0.2px);
+  top: calc(50% - 600px/2 - 0.01px); */
   height: 100%;
-  width: 90%;
+  width: 93%;
 }
 
 li{

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import Popup from 'reactjs-popup';
 
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 function DisplayDetection(props: any) {
 
 
@@ -17,7 +18,7 @@ function DisplayDetection(props: any) {
 
     const config = {
       headers: {
-        authorization: sessionStorage.getItem('token')? `${sessionStorage.getItem('token')}` : '',
+        authorization: sessionStorage.getItem('token') ? `${sessionStorage.getItem('token')}` : '',
       },
     };
 
@@ -28,25 +29,31 @@ function DisplayDetection(props: any) {
     };
   };
 
+
   return (
 
     <div className="row justify-content-center">
 
-      <div className=" upload my-5">
-        <img className="images my-5" src={props.xray?.detectionURL} alt="" />
-          
+      <div className="upload my-5">
+
+        <TransformWrapper> 
+          <TransformComponent >
+            <img  className="images m-5" src={props.xray?.detectionURL} alt="" />
+          </TransformComponent>
+        </TransformWrapper>
+
         <Popup trigger=
-                {<button className="buttons m-4">Diseases Names</button>}
-                >           
-                <div >
-                  CP: Caries Proximal<br/>
-                  CO: Caries Occlusal<br/>
-                  PBLID: Periodontal Bone Loss Inter Dental<br/>
-                  PBLIR: Periodontal Bone Loss Inter Radicular<br/>
-                  PL: Periapical Lesion<br/>
-                  I: Impaction <br/>
-                </div>
-            </Popup>
+          {<button className="buttons m-4">Diseases Names</button>}
+        >
+          <div >
+            CP: Caries Proximal<br />
+            CO: Caries Occlusal<br />
+            PBLID: Periodontal Bone Loss Inter Dental<br />
+            PBLIR: Periodontal Bone Loss Inter Radicular<br />
+            PL: Periapical Lesion<br />
+            I: Impaction <br />
+          </div>
+        </Popup>
       </div>
 
       <div className="form-wrapper col-md-5 col-sm-9">

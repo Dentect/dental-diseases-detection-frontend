@@ -1,3 +1,5 @@
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+
 function ViewXrays(props: any) {
 
   var images = (props.xrays).map(function (image: any) {
@@ -5,9 +7,20 @@ function ViewXrays(props: any) {
 
       <div className="upload my-5">
         <h1>Original X-ray</h1>
-        <img className="images my-3" src={image.originalURL} alt="" />
+        <TransformWrapper> 
+          <TransformComponent >
+          <img className="images m-5" src={image.originalURL} alt="" />
+          </TransformComponent>
+        </TransformWrapper>
+
+
         <h1>Detected X-ray</h1>
-        <img className="images my-3" src={image.detectionURL} alt="" />
+        <TransformWrapper> 
+          <TransformComponent >
+          <img className="images m-5" src={image.detectionURL} alt="" />
+          </TransformComponent>
+        </TransformWrapper>
+
       </div>
     );
   });
