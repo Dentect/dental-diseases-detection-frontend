@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import Popup from 'reactjs-popup';
 
@@ -13,8 +14,11 @@ function DisplayDetection(props: any) {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [loading, setLoading] = useState(false);
 
   async function onSubmit(data: any) {
+
+    setLoading(true);
 
     const config = {
       headers: {
@@ -24,7 +28,9 @@ function DisplayDetection(props: any) {
 
     try {
       await axios.post(baseURL, data, config);
+      setLoading(false);
     } catch (err: any) {
+      setLoading(false);
       alert(err.response.data.error);
     };
   };
@@ -63,6 +69,8 @@ function DisplayDetection(props: any) {
         <div className="data submit">
           <button onClick={handleSubmit(onSubmit)} type="submit" className="buttons m-4">Save</button>
         </div>
+
+        {loading ? <h2 className="loading">Loading...</h2> : ""}
 
       </div>
     </div>
