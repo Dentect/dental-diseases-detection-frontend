@@ -16,12 +16,12 @@ An application dentists can use to diagnose specific abnormalities in less time 
 1. To run the server, the first step is downloading and installing [NodeJS](https://nodejs.org/en/download) on your machine. <br/>
 
 2. Open a terminal, navigate to the project's directory, and run the following command to install the needed packages:
-```
+``` bash
 npm i
 ```
 
 3. Now, run the server through:
-```
+``` bash
 npm start
 ```
 
