@@ -40,10 +40,5 @@ Our end-user is the dentist who can
 
 <br/>
 
-## Demo
-https://github.com/Dentect/dental-diseases-detection-frontend/assets/75479353/d45ee4bd-6bf1-48e1-8ad8-8e82cf936fd4
-
-<br/>
-
 ## License
 The front-end is available under the [MIT License](https://github.com/Dentect/dental-diseases-detection-frontend/blob/main/LICENSE).
